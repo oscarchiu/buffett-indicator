@@ -59,7 +59,7 @@
             <meta property="og:title" content="Buffett Indicator: Global Stock Market Valuations and Forecasts" /><title>Buffett Indicator: Global Stock Market Valuations and Forecasts</title>         <script type="text/javascript">
              this.top.location !== this.location && (this.top.location = this.location);
          </script>
-          <link href="//apis.gurufocus.com/css/main.css?100.03" rel="stylesheet" type="text/css" /> 
+          <link href="//apis.gurufocus.com/css/main.css?101.12" rel="stylesheet" type="text/css" /> 
  <!--          <link href="//apis.gurufocus.com/css/bootstrap-iso.css?1.0.0" rel="stylesheet" type="text/css" />
          <link href="//opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" rel="stylesheet">
          <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.3/themes/smoothness/jquery-ui.min.css" /> -->
@@ -153,7 +153,26 @@
               }
 
               html.dark-mode #menu_container {
-                background: white;
+                filter: invert(1);
+                background-color: #081131;
+                position: relative;
+                z-index: 9999;
+              }
+
+              html.dark-mode #menu li a {
+                /* color: black; */
+              }
+
+              html.dark-mode #menu li .dropdown_scroll {
+                background-color: black;
+              }
+
+              html.dark-mode #menu li .dropdown_scroll a {
+                color: white !important;
+              }
+
+              html.dark-mode #logo, html.dark-mode .user_avatar {
+                filter: invert(1);
               }
 
               html.dark-mode #footer {
@@ -165,10 +184,6 @@
               }
 
               html.dark-mode .footerli a {
-                color: black;
-              }
-
-              html.dark-mode #menu li a {
                 color: black;
               }
 
@@ -298,16 +313,17 @@
 
             function darkMode() {
                 let darkmode = getCookie('darkmodes')
-                console.log('toggle')
-                console.log(darkmode)
                 if (!darkmode) {
                     setCookie("darkmodes","1",10*365)
                     document.body.style.backgroundColor = 'rgb(231, 231, 231)'
+                    document.getElementById('dark_switch_moon').style.display = 'none'
+                    document.getElementById('dark_switch_sun').style.display = ''
                 } else {
-                    console.log('delete cookie')
                     document.body.style.backgroundColor = 'white'
                     document.cookie = "darkmodes" + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;path=/;';
                     document.cookie = "darkmodes" + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;path=/financials;';
+                    document.getElementById('dark_switch_moon').style.display = ''
+                    document.getElementById('dark_switch_sun').style.display = 'none'
                 }
                 document.documentElement.classList.toggle('dark-mode')
             }
@@ -368,7 +384,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!--Maintenance ends-->
             <div class="bootstrap-iso" >
             <a href="https://www.gurufocus.com/pricing?utm_source=webApp&utm_medium=userClick&utm_campaign=old_website_notification_bar">
-                <div class="alert alert-warning" role="alert" style="margin-bottom:10px; text-align:center;background: #fbbc05;color: black;">
+                <div class="alert alert-warning" role="alert" style="margin-bottom:0; text-align:center;background: #fbbc05;color: black;">
                     <font style="font-weight:bold;font-size:14px;">Get Your 7-Day Free Trial! &nbsp;&nbsp;&nbsp;Start Now!</font>
                 </div>
             </a>
@@ -380,11 +396,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </a>
                 </div>
                 <ul id="menu" style="margin-top: 0px; margin-bottom: 0px; height: 100%;">
-                    <div id="dark" class="right" style="margin-top: 12px;height: 30px;line-height: 30px;"> 
-                        <label class="switch">  
-                          <input type="checkbox" onclick="darkMode()" >  
-                          <span class="d-slider round"></span>  
-                        </label>  
+                                    <div id="dark" onclick="darkMode()" class="right" style="margin-top:8px;height: 30px;line-height: 30px; cursor:pointer;"> 
+                        <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"/>
+                            <path
+                            id="dark_switch_sun"
+                            style="display: none;"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M20.75 8.75V9.5V12.5H19.25V9.5V8.75H20.75ZM20 16.25C17.9289 16.25 16.25 17.9289 16.25 20C16.25 22.0711 17.9289 23.75 20 23.75C22.0711 23.75 23.75 22.0711 23.75 20C23.75 17.9289 22.0711 16.25 20 16.25ZM14.75 20C14.75 17.1005 17.1005 14.75 20 14.75C22.8995 14.75 25.25 17.1005 25.25 20C25.25 22.8995 22.8995 25.25 20 25.25C17.1005 25.25 14.75 22.8995 14.75 20ZM20.75 27.5H19.25V30.5V31.25H20.75V30.5V27.5ZM8.75 19.25H9.5H12.5V20.75H9.5H8.75V19.25ZM27.5 19.25V20.75H30.5H31.25V19.25H30.5H27.5ZM28.4853 12.5754L27.955 13.1058L25.8337 15.2271L24.773 14.1664L26.8943 12.0451L27.4247 11.5148L28.4853 12.5754ZM15.227 25.8336L14.1664 24.773L12.0451 26.8943L11.5147 27.4246L12.5754 28.4853L13.1057 27.9549L15.227 25.8336ZM12.5753 11.5148L13.1057 12.0451L15.227 14.1664L14.1663 15.2271L12.045 13.1058L11.5147 12.5754L12.5753 11.5148ZM25.8336 24.773L24.773 25.8336L26.8943 27.9549L27.4246 28.4853L28.4853 27.4246L27.9549 26.8943L25.8336 24.773Z"
+                            fill="white"
+                            fill-opacity="0.89"/>
+                            <path
+                            id="dark_switch_moon"
+                            style="display: ;"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M19.7074 9.13178C19.8526 9.38932 19.8329 9.70809 19.6572 9.94582C18.5988 11.3777 18.0895 13.1419 18.2219 14.9175C18.3543 16.6931 19.1197 18.3623 20.3787 19.6213C21.6378 20.8804 23.3069 21.6457 25.0825 21.7781C26.8582 21.9105 28.6223 21.4012 30.0542 20.3428C30.2919 20.1671 30.6107 20.1474 30.8682 20.2926C31.1258 20.4377 31.274 20.7206 31.2468 21.015C31.0498 23.147 30.2497 25.1787 28.9401 26.8726C27.6304 28.5664 25.8655 29.8522 23.8518 30.5796C21.8381 31.307 19.6589 31.4458 17.5691 30.9798C15.4794 30.5139 13.5655 29.4624 12.0516 27.9484C10.5376 26.4345 9.48615 24.5206 9.02019 22.4309C8.55423 20.3412 8.69305 18.1619 9.42042 16.1482C10.1478 14.1345 11.4336 12.3696 13.1275 11.06C14.8213 9.75034 16.8531 8.95022 18.985 8.75319C19.2794 8.72599 19.5623 8.87424 19.7074 9.13178ZM17.5721 10.5175C16.2967 10.8479 15.0958 11.4342 14.0449 12.2466C12.5765 13.382 11.4618 14.912 10.8312 16.6578C10.2006 18.4036 10.0803 20.2928 10.4842 22.1045C10.8882 23.9161 11.7998 25.5753 13.1122 26.8878C14.4247 28.2003 16.0839 29.1118 17.8956 29.5158C19.7072 29.9197 21.5965 29.7994 23.3422 29.1688C25.088 28.5382 26.618 27.4235 27.7534 25.9551C28.5659 24.9042 29.1521 23.7033 29.4825 22.428C28.0868 23.0939 26.5325 23.3904 24.971 23.2739C22.8371 23.1148 20.8311 22.1951 19.318 20.682C17.805 19.1689 16.8852 17.163 16.7261 15.029C16.6096 13.4675 16.9062 11.9133 17.5721 10.5175Z"
+                            fill="white"
+                            fill-opacity="0.89"/>
+                        </svg>
                     </div>
                                             <li class=" drop ">
                             <a href="/" class='header-link ' >Home                                <span style="width: 10px; height: 5px; color: white; display: inline-block; "><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="10" height="10" viewBox="0 0 256 256" xml:space="preserve">
@@ -1701,54 +1737,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="searchbarInner" style="vertical-align:middle;">
                         <form style="float:left;margin-top:0px;margin-bottom: 0px;" action="/menu_search.php" id="searchform">
                 <div class="search">
-                    <div class="left" id="search_type_box">
+                    <!-- <div class="left" id="search_type_box">
                         <select id="search_type_header">
                             <option value="Search">Search</option>
                             <option value="Compare">Compare</option>
                         </select>
                         <label id="search_type_label">Search ▾</label>
-                    </div>
-                    <input type="text" id="search_header" onfocus="if (this.value == 'Enter Ticker, Guru, Company, etc.') {
+                    </div> -->
+                    <input type="text" id="search_header" placeholder="Ticker, Guru, Company ..." onKeyPress="return checkSubmit(event)" class="box" name="keyword" />
+                    <!-- <input type="text" id="compare_header" onfocus="if (this.value == 'Symbols (e.g. WMT, TGT, COST)') {
                                 this.value = '';
                             }" onblur="if (this.value == '') {
-                                        this.value = 'Enter Ticker, Guru, Company, etc.'
-                                    }" value="Enter Ticker, Guru, Company, etc." onKeyPress="return checkSubmit(event)" class="box" name="keyword" />
-                    <input type="text" id="compare_header" onfocus="if (this.value == 'Enter Symbols (e.g. WMT, TGT, COST)') {
-                                this.value = '';
-                            }" onblur="if (this.value == '') {
-                                        this.value = 'Enter Symbols (e.g. WMT, TGT, COST)'
-                                    }" value="Enter Symbols (e.g. WMT, TGT, COST)" class="box" name="compare" style="display: none;" />
+                                        this.value = 'Symbols (e.g. WMT, TGT, COST)'
+                                    }" value="Symbols (e.g. WMT, TGT, COST)" class="box" name="compare" style="display: none;" /> -->
                     <input type="hidden" name="symbol1" id="company_hidden" />
                     <input type="hidden" name="stype" id="stype_hidden" value="search" />
                     <input type="hidden" name="searchKeyWords" id="searchKeyWords_hidden" />
-                    <input id="search_submit" type="submit" value="Go" class="btn" style="height:24px;" />
+                    <!-- <input id="search_submit" type="submit" value="Go" class="btn" style="height:24px;" /> -->
                 </div>
             </form>
             
            
-            <div style="margin-top:-5px;" id="my_nav" class="right ">
-                <div class="control_links right" style="margin-left: 10px;">
+            <div id="my_nav" class="right ">
+                <div class="control_links" style="display:inline;">
                                     <a href="https://www.gurufocus.com/pricing?ref=stock-name-summary&sel=premium&utm_source=webApp&utm_medium=userClick&utm_campaign=old_website_topMenuButton" class="bs_btn bs_btn-warning" id="topMenuSubButton" style="color:white;font-size: 14px;">Get 7-Day Free Trial</a>
                                  </div>
 
 
                 <ul>
                     <li class="control_links">
-                        <a href="/ic/space.php?do=portfolio&view=me">
-                            <img src="https://static.gurufocus.com/images/icons/gray/png/notepad_icon&16.png" alt="My Portfolio" />
-                            <span class="header-link-button">Portfolios ▾</span>
+                        <a href="/ticket/open.php" target="_blank" >
+                            <span class="header-link-button">Feedback</span>
                         </a>
-                        <ul class="my_nav_sub">
-                            <li class="control_links"><a href="/ic/space.php?do=portfolio&view=me"><img src="https://static.gurufocus.com/images/icons/gray/png/notepad_icon&16.png" alt="My Portfolio" />Portfolios Overview</a></li>
-                            <li class="control_links"><a href="/ic/space.php?do=portfolio&create=new"><img src="https://static.gurufocus.com/images/icons/gray/png/sq_plus_icon&16.png" alt="Create New Portfolio" />Create New Portfolio</a></li>
-                            <li class="control_links"><a href="/portfolio_contest.php"><img src="https://www.gurufocus.com/ic/image/icon/5.gif" alt="Portfolio Contest" />Portfolio Contest</a></li>
-                            
-                        </ul>
                     </li>
-                    <li class="control_links"><a id="btn_header_selectguru" href="javascript:;" onclick="h_guru_browse()" >
-                        <img src="https://static.gurufocus.com/images/icons/gray/png/user_icon&16.png" alt="Gurus" />
-                        <span class="header-link-button">Gurus ▾
-                    </a>
+                    <li class="control_links">
+                        <a id="btn_header_selectguru" href="javascript:;" onclick="h_guru_browse()" >
+                            <img src="https://static.gurufocus.com/images/icons/gray/png/users_icon&16.png" alt="Gurus" />
+                            <span class="header-link-button">My Gurus</span>
+                        </a>
                         <ul class="my_nav_sub">
                             <li class="control_links"><a href="javascript:;" onclick="h_guru_browse()"><img src="https://static.gurufocus.com/images/icons/gray/png/user_icon&16.png" alt="Gurus" />Quick Browse</a></li>
                             <li class="control_links"><a href="/membership/upgrade.php?ref=myguru" title="Personalize My Guru List"><img src="https://static.gurufocus.com/images/icons/gray/png/cog_icon&amp;16.png" alt="Personalize">Personalize</a></li>
@@ -1757,6 +1783,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                         <hr>
                             <li class="control_links"><a href="/ListGuru.php?group=all" ><img src="https://static.gurufocus.com/images/icons/gray/png/folder_icon&16.png" alt="Gurus" />Premium Gurus <img src="https://static.gurufocus.com/images/P_12.jpg" alt="Premium Gurus"></a></li>
                             <li class="control_links"><a href="/ListGuru.php?group=plus" ><img src="https://static.gurufocus.com/images/icons/gray/png/folder_icon&16.png" alt="Gurus" />Premium Plus Investors <img src="https://static.gurufocus.com/images/premium/P-Plus_12.jpg" alt="Premium Plus Investors"></a></li>
+                        </ul>
+                    </li>
+                    <li class="control_links">
+                        <a href="/ic/space.php?do=portfolio&view=me">
+                            <img src="https://static.gurufocus.com/images/icons/gray/png/case_icon&16.png" alt="My Portfolio" />
+                            <span class="header-link-button">My Portfolios</span>
+                        </a>
+                        <ul class="my_nav_sub">
+                            <li class="control_links"><a href="/ic/space.php?do=portfolio&view=me"><img src="https://static.gurufocus.com/images/icons/gray/png/case_icon&16.png" alt="My Portfolio" />Portfolios Overview</a></li>
+                            <li class="control_links"><a href="/ic/space.php?do=portfolio&create=new"><img src="https://static.gurufocus.com/images/icons/gray/png/sq_plus_icon&16.png" alt="Create New Portfolio" />Create New Portfolio</a></li>
+                            <li class="control_links"><a href="/portfolio_contest.php"><img src="https://www.gurufocus.com/ic/image/icon/5.gif" alt="Portfolio Contest" />Portfolio Contest</a></li>
+                            
                         </ul>
                     </li>
                 </ul>
@@ -1902,7 +1940,7 @@ $('#ui-id-18').attr('style', 'height: 0px; padding: 0px;');
 <div class="side_nav" style=""><div style="position: relative;"><a href="/global-market-valuation.php" style="padding-left: 0px;"><h3>Global Market Valuation</h3></a><form action method="GET" title="Modified Annual Return" style="position: absolute; right: 0; top: 4px;"><label class="switch" style="margin-left: 10px;">
               <input type="checkbox" checked name="checked" onchange="this.form.submit()">
               <span class="slider round"></span>
-            </label></form><table style="padding:1px"><tr><td></td><td class="date">Modified Annual Return (%)</td></tr><tr><th><a href="/global-market-valuation.php?country=SGP">Singapore</a></th><td><a href="/global-market-valuation.php?country=SGP"><img src=/images/green.gif width="53.046594982079px" height="12px" alt="14.8%" /> <font class="date">14.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=BEL">Belgium</a></th><td><a href="/global-market-valuation.php?country=BEL"><img src=/images/green.gif width="46.953405017921px" height="12px" alt="13.1%" /> <font class="date">13.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=AUS">Australia</a></th><td><a href="/global-market-valuation.php?country=AUS"><img src=/images/green.gif width="41.5770609319px" height="12px" alt="11.6%" /> <font class="date">11.6%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ESP">Spain</a></th><td><a href="/global-market-valuation.php?country=ESP"><img src=/images/green.gif width="46.594982078853px" height="12px" alt="13.0%" /> <font class="date">13.0%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=GBR">UK</a></th><td><a href="/global-market-valuation.php?country=GBR"><img src=/images/green.gif width="35.483870967742px" height="12px" alt="9.9%" /> <font class="date">9.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CAN">Canada</a></th><td><a href="/global-market-valuation.php?country=CAN"><img src=/images/green.gif width="19.354838709677px" height="12px" alt="5.4%" /> <font class="date">5.4%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ITA">Italy</a></th><td><a href="/global-market-valuation.php?country=ITA"><img src=/images/green.gif width="30.10752688172px" height="12px" alt="8.4%" /> <font class="date">8.4%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CHE">Switzerland</a></th><td><a href="/global-market-valuation.php?country=CHE"><img src=/images/green.gif width="28.673835125448px" height="12px" alt="8.0%" /> <font class="date">8.0%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=DEU">Germany</a></th><td><a href="/global-market-valuation.php?country=DEU"><img src=/images/green.gif width="25.806451612903px" height="12px" alt="7.2%" /> <font class="date">7.2%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=SWE">Sweden</a></th><td><a href="/global-market-valuation.php?country=SWE"><img src=/images/green.gif width="17.204301075269px" height="12px" alt="4.8%" /> <font class="date">4.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=HKG">Hong Kong</a></th><td><a href="/global-market-valuation.php?country=HKG"><img src=/images/green.gif width="16.845878136201px" height="12px" alt="4.7%" /> <font class="date">4.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=KOR">Korea</a></th><td><a href="/global-market-valuation.php?country=KOR"><img src=/images/green.gif width="8.9605734767025px" height="12px" alt="2.5%" /> <font class="date">2.5%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=USA">USA</a></th><td><a href="/global-market-valuation.php?country=USA"><img src=/images/green.gif width="10.035842293907px" height="12px" alt="2.8%" /> <font class="date">2.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=NLD">Netherlands</a></th><td><a href="/global-market-valuation.php?country=NLD"><img src=/images/green.gif width="12.903225806452px" height="12px" alt="3.6%" /> <font class="date">3.6%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=FRA">France</a></th><td><a href="/global-market-valuation.php?country=FRA"><img src=/images/green.gif width="14.695340501792px" height="12px" alt="4.1%" /> <font class="date">4.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=JPN">Japan</a></th><td><a href="/global-market-valuation.php?country=JPN"><img src=/images/green.gif width="0.7168458781362px" height="12px" alt="0.2%" /> <font class="date">0.2%</font></a></td></tr><tr><th colspan=2><br />Emerging Market:</th></tr><tr><th><a href="/global-market-valuation.php?country=RUS">Russia</a></th><td><a href="/global-market-valuation.php?country=RUS"><img src=/images/green.gif width="100px" height="12px" alt="27.9%" /> <font class="date">27.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=PAK">Pakistan</a></th><td><a href="/global-market-valuation.php?country=PAK"><img src=/images/green.gif width="98.924731182796px" height="12px" alt="27.6%" /> <font class="date">27.6%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=EGY">Egypt</a></th><td><a href="/global-market-valuation.php?country=EGY"><img src=/images/green.gif width="63.799283154122px" height="12px" alt="17.8%" /> <font class="date">17.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=BRA">Brazil</a></th><td><a href="/global-market-valuation.php?country=BRA"><img src=/images/green.gif width="45.519713261649px" height="12px" alt="12.7%" /> <font class="date">12.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=IDN">Indonesia</a></th><td><a href="/global-market-valuation.php?country=IDN"><img src=/images/green.gif width="37.275985663082px" height="12px" alt="10.4%" /> <font class="date">10.4%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CHN">China</a></th><td><a href="/global-market-valuation.php?country=CHN"><img src=/images/green.gif width="25.806451612903px" height="12px" alt="7.2%" /> <font class="date">7.2%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=MEX">Mexico</a></th><td><a href="/global-market-valuation.php?country=MEX"><img src=/images/green.gif width="25.806451612903px" height="12px" alt="7.2%" /> <font class="date">7.2%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=IND">India</a></th><td><a href="/global-market-valuation.php?country=IND"><img src=/images/green.gif width="24.731182795699px" height="12px" alt="6.9%" /> <font class="date">6.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ZAF">South Africa</a></th><td><a href="/global-market-valuation.php?country=ZAF"><img src=/images/green.gif width="25.089605734767px" height="12px" alt="7.0%" /> <font class="date">7.0%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=TUR">Turkey</a></th><td><a href="/global-market-valuation.php?country=TUR"><img src=/images/green.gif width="21.505376344086px" height="12px" alt="6.0%" /> <font class="date">6.0%</font></a></td></tr></table></div><div style="position: relative;">
+            </label></form><table style="padding:1px"><tr><td></td><td class="date">Modified Annual Return (%)</td></tr><tr><th><a href="/global-market-valuation.php?country=SGP">Singapore</a></th><td><a href="/global-market-valuation.php?country=SGP"><img src=/images/green.gif width="52.688172043011px" height="12px" alt="14.7%" /> <font class="date">14.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=BEL">Belgium</a></th><td><a href="/global-market-valuation.php?country=BEL"><img src=/images/green.gif width="46.953405017921px" height="12px" alt="13.1%" /> <font class="date">13.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=AUS">Australia</a></th><td><a href="/global-market-valuation.php?country=AUS"><img src=/images/green.gif width="41.218637992832px" height="12px" alt="11.5%" /> <font class="date">11.5%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ESP">Spain</a></th><td><a href="/global-market-valuation.php?country=ESP"><img src=/images/green.gif width="46.594982078853px" height="12px" alt="13.0%" /> <font class="date">13.0%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=GBR">UK</a></th><td><a href="/global-market-valuation.php?country=GBR"><img src=/images/green.gif width="35.125448028674px" height="12px" alt="9.8%" /> <font class="date">9.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CAN">Canada</a></th><td><a href="/global-market-valuation.php?country=CAN"><img src=/images/green.gif width="19.354838709677px" height="12px" alt="5.4%" /> <font class="date">5.4%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ITA">Italy</a></th><td><a href="/global-market-valuation.php?country=ITA"><img src=/images/green.gif width="29.749103942652px" height="12px" alt="8.3%" /> <font class="date">8.3%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CHE">Switzerland</a></th><td><a href="/global-market-valuation.php?country=CHE"><img src=/images/green.gif width="28.31541218638px" height="12px" alt="7.9%" /> <font class="date">7.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=DEU">Germany</a></th><td><a href="/global-market-valuation.php?country=DEU"><img src=/images/green.gif width="25.448028673835px" height="12px" alt="7.1%" /> <font class="date">7.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=SWE">Sweden</a></th><td><a href="/global-market-valuation.php?country=SWE"><img src=/images/green.gif width="17.204301075269px" height="12px" alt="4.8%" /> <font class="date">4.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=HKG">Hong Kong</a></th><td><a href="/global-market-valuation.php?country=HKG"><img src=/images/green.gif width="16.129032258065px" height="12px" alt="4.5%" /> <font class="date">4.5%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=KOR">Korea</a></th><td><a href="/global-market-valuation.php?country=KOR"><img src=/images/green.gif width="8.9605734767025px" height="12px" alt="2.5%" /> <font class="date">2.5%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=USA">USA</a></th><td><a href="/global-market-valuation.php?country=USA"><img src=/images/green.gif width="10.035842293907px" height="12px" alt="2.8%" /> <font class="date">2.8%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=FRA">France</a></th><td><a href="/global-market-valuation.php?country=FRA"><img src=/images/green.gif width="14.695340501792px" height="12px" alt="4.1%" /> <font class="date">4.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=NLD">Netherlands</a></th><td><a href="/global-market-valuation.php?country=NLD"><img src=/images/green.gif width="12.544802867384px" height="12px" alt="3.5%" /> <font class="date">3.5%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=JPN">Japan</a></th><td><a href="/global-market-valuation.php?country=JPN"><img src=/images/green.gif width="0.7168458781362px" height="12px" alt="0.2%" /> <font class="date">0.2%</font></a></td></tr><tr><th colspan=2><br />Emerging Market:</th></tr><tr><th><a href="/global-market-valuation.php?country=RUS">Russia</a></th><td><a href="/global-market-valuation.php?country=RUS"><img src=/images/green.gif width="100px" height="12px" alt="27.9%" /> <font class="date">27.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=PAK">Pakistan</a></th><td><a href="/global-market-valuation.php?country=PAK"><img src=/images/green.gif width="99.283154121864px" height="12px" alt="27.7%" /> <font class="date">27.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=EGY">Egypt</a></th><td><a href="/global-market-valuation.php?country=EGY"><img src=/images/green.gif width="63.440860215054px" height="12px" alt="17.7%" /> <font class="date">17.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=BRA">Brazil</a></th><td><a href="/global-market-valuation.php?country=BRA"><img src=/images/green.gif width="45.519713261649px" height="12px" alt="12.7%" /> <font class="date">12.7%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=IDN">Indonesia</a></th><td><a href="/global-market-valuation.php?country=IDN"><img src=/images/green.gif width="37.275985663082px" height="12px" alt="10.4%" /> <font class="date">10.4%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=CHN">China</a></th><td><a href="/global-market-valuation.php?country=CHN"><img src=/images/green.gif width="25.448028673835px" height="12px" alt="7.1%" /> <font class="date">7.1%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=MEX">Mexico</a></th><td><a href="/global-market-valuation.php?country=MEX"><img src=/images/green.gif width="25.806451612903px" height="12px" alt="7.2%" /> <font class="date">7.2%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=IND">India</a></th><td><a href="/global-market-valuation.php?country=IND"><img src=/images/green.gif width="25.089605734767px" height="12px" alt="7.0%" /> <font class="date">7.0%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=ZAF">South Africa</a></th><td><a href="/global-market-valuation.php?country=ZAF"><img src=/images/green.gif width="24.731182795699px" height="12px" alt="6.9%" /> <font class="date">6.9%</font></a></td></tr><tr><th><a href="/global-market-valuation.php?country=TUR">Turkey</a></th><td><a href="/global-market-valuation.php?country=TUR"><img src=/images/green.gif width="20.071684587814px" height="12px" alt="5.6%" /> <font class="date">5.6%</font></a></td></tr></table></div><div style="position: relative;">
 	    	<a href="/stock-market-valuations.php" style="padding-left: 0px;"><h3 style="margin-top: 12px;">US Market Valuation</h3></a>
 	    	<a href="/stock-market-valuations.php" class="nav">Buffett Indicator</a>
 	    	<a href="/yield_curve.php" class="nav">U.S. Treasury Yield Curve</a>
@@ -1939,14 +1977,14 @@ $('#ui-id-18').attr('style', 'height: 0px; padding: 0px;');
         </div><h3>Stocks: Losers and Gainers</h3><table class='R10' style='width: 100%'><tr>
             <th style='text-align: left'>Stock</th><th style='text-align: right'>Price</th>
             <th style='text-align: right'>Price Change</th>
-            </tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/WETG'>WETG</a></td><td style='text-align: right'>$ 14.41</td><td style='text-align: right; color: green'>$5.97 (70.73%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/LAES'>LAES</a></td><td style='text-align: right'>$ 17.73</td><td style='text-align: right; color: green'>$7.28 (69.67%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/VERA'>VERA</a></td><td style='text-align: right'>$ 13.35</td><td style='text-align: right; color: green'>$2.35 (21.36%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/INOD'>INOD</a></td><td style='text-align: right'>$ 12.09</td><td style='text-align: right; color: green'>$1.84 (17.95%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/ACOR'>ACOR</a></td><td style='text-align: right'>$ 12.10</td><td style='text-align: right; color: green'>$1.77 (17.13%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/HUM'>HUM</a></td><td style='text-align: right'>$ 455.00</td><td style='text-align: right; color: red'>$-57.63 (-11.24%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/AGL'>AGL</a></td><td style='text-align: right'>$ 18.73</td><td style='text-align: right; color: red'>$-2.34 (-11.11%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/SENEA'>SENEA</a></td><td style='text-align: right'>$ 43.01</td><td style='text-align: right; color: red'>$-5.27 (-10.92%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/FGBI'>FGBI</a></td><td style='text-align: right'>$ 13.07</td><td style='text-align: right; color: red'>$-1.45 (-9.99%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/KURA'>KURA</a></td><td style='text-align: right'>$ 11.47</td><td style='text-align: right; color: red'>$-1.25 (-9.83%) </td></tr></table><h3>Global Market Valuation: UK Market Will Have Much Higher Returns Than The US Market</h3>
+            </tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/EDTX'>EDTX</a></td><td style='text-align: right'>$ 33.80</td><td style='text-align: right; color: green'>$22.74 (202.13%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/SDA'>SDA</a></td><td style='text-align: right'>$ 20.72</td><td style='text-align: right; color: green'>$3.63 (20.66%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/GGAA'>GGAA</a></td><td style='text-align: right'>$ 13.41</td><td style='text-align: right; color: green'>$1.86 (16.10%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/VSTM'>VSTM</a></td><td style='text-align: right'>$ 10.85</td><td style='text-align: right; color: green'>$1.50 (16.09%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/VERV'>VERV</a></td><td style='text-align: right'>$ 19.83</td><td style='text-align: right; color: green'>$2.74 (16.02%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/OBIO'>OBIO</a></td><td style='text-align: right'>$ 10.91</td><td style='text-align: right; color: red'>$-1.89 (-14.77%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/WLY'>WLY</a></td><td style='text-align: right'>$ 32.45</td><td style='text-align: right; color: red'>$-4.17 (-11.39%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/VERX'>VERX</a></td><td style='text-align: right'>$ 20.16</td><td style='text-align: right; color: red'>$-2.35 (-10.44%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/ELTX'>ELTX</a></td><td style='text-align: right'>$ 13.88</td><td style='text-align: right; color: red'>$-1.47 (-9.53%) </td></tr><tr><td style='text-align: left'><a class='stocks_tp' style='color: #005790' href='/stock/WETG'>WETG</a></td><td style='text-align: right'>$ 13.02</td><td style='text-align: right; color: red'>$-1.29 (-8.95%) </td></tr></table><h3>Global Market Valuation: UK Market Will Have Much Higher Returns Than The US Market</h3>
             <iframe  class="embed-video" frameborder="0"  height="160" src="https://www.youtube.com/embed/BeyOTnSRTno" width="280"></iframe><h3>Related Articles:</h3><ul><li><a href="/news/160566/why-singapore-stock-market-may-deliver-better-returns-with-less-risk">Why Singapore Stock Market May Deliver Better Returns with Less Risk?</a> </li></ul><div><a href="" target="_self" class="bs_btn bs_btn-primary" title="全球股市估值和未来回报率预测">中文</a></div></div></div>    <div class="right article_style" style="width: 680px;" id="content1" >
         <div style="margin-bottom: 8px;">
             <a href="/">GURUFOCUS.COM</a>  »
             Global Market Valuations
             <a style="border-left: 1px solid #eaeff3; padding-left: 12px; margin-left: 12px;" href="https://www.gurufocus.com/tutorial/article/65/market-valuation" target="_blank"> Tutorial </a>
         </div>
-        <h1>Buffett Indicator: Global Stock Market Valuations and Forecasts</h1>Updated at Wed, 14 Jun 2023 20:30:07 -0500        <div class="hide_for_print control_links">
+        <h1>Buffett Indicator: Global Stock Market Valuations and Forecasts</h1>Updated at Thu, 15 Jun 2023 20:30:08 -0500        <div class="hide_for_print control_links">
             <div class="social_network_button control_links" style="position: relative; top: -5px;">
 <a  href="#" onclick="javascript:;" id="fake_link_add_bookmark"><img  alt="Bookmark"  src="https://static.gurufocus.com/images/icons/gray/png/bookmark_2_icon&16.png">Bookmark</a></div>
 <div class="social_network_button control_links" style="position: relative; top: -5px;">
@@ -2262,7 +2300,7 @@ $('#first_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -2327,7 +2365,7 @@ $('#first_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:14.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:10.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:10.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:7.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:1.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:28.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:26.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:13.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:8.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:13.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:10.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:10.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:7.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:4.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:3.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:28.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:13.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -2537,7 +2575,7 @@ $('#second_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -2602,7 +2640,7 @@ $('#second_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:14.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:13.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:11.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:13.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:9.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:5.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:8.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:3.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:4.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:0.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:27.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:6.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:6.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:14.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:13.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:11.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:13.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:9.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:5.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:7.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:4.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:3.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:0.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:27.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:5.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -2912,7 +2950,7 @@ $('#third_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:26.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:17.02, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:4.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:3.95, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.32, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:2.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:2.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:2.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:2.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:1.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:1.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:1.72, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:1.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:1.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.02, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:0.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.48, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:0.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:0.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:26.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:17.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:4.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:3.95, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.32, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.17, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:2.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:2.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:2.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:2.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:1.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:1.82, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:1.72, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.69, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:1.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:1.46, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:0.87, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.48, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:0.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:0.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 }]
         },function(chart){
 
@@ -3174,7 +3212,7 @@ $('#fouth_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:42.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:10.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.42, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:6.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:3.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:2.91, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:0.75, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:1.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:0.78, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.51, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:1.74, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.69, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:0.58, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:0.79, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:2.08, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:1.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.33, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:42.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:10.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:6.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:3.51, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:2.94, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:0.76, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:1.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:0.79, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.52, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:1.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.71, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:0.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:0.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:2.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.74, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:1.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.29, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 }]
         },function(chart){
 
@@ -3435,7 +3473,7 @@ $('#five_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:158.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:60.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:57.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:152.91, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:92.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:106.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:121.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:139.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:36.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:51.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:40.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:28.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:100.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:101.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:35.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:54.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:139.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:243.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:57.74, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:159.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:152.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:308.82, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:1198.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:91.72, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:13.65, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.48, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:158.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:61.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:57.65, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:152.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:92.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:106.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:121.33, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:139.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:36.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:51.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:40.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:28.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:100.48, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:101.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:35.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:54.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:139.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:243.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:57.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:158.57, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:154.08, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:309.74, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:1224.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:94.02, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:13.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 }]
         },function(chart){
 
@@ -3479,7 +3517,7 @@ data: [{y:158.8, url:'https://www.gurufocus.com/global-market-valuation.php?coun
 </p>
 
 <table class="at" style="width: 100%; display: block; overflow: auto;"><tr><th>Country</th><th>GDP ($Trillion)</th><th>Total Market/GDP Ratio (%)</th>
-    <th>Historical Min. (%)</th><th>Historical Max. (%) </th><th>Years of Data</th><th>Country ETF</th></tr><tr><td><a href="/global-market-valuation.php?country=USA" class="nav">USA</a></td><td>26.49</td><td>158.8</td><td>32.7</td><td>199.5</td><td>53</td><td><a href="/StockBuy.php?symbol=SPY">SPY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHN" class="nav">China</a></td><td>17.02</td><td>60.9</td><td>0.23</td><td>156.87</td><td>33</td><td><a href="/StockBuy.php?symbol=MCHI">MCHI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=DEU" class="nav">Germany</a></td><td>4.19</td><td>57.73</td><td>18.46</td><td>76.61</td><td>36</td><td><a href="/StockBuy.php?symbol=EWG">EWG</a></td></tr><tr><td><a href="/global-market-valuation.php?country=JPN" class="nav">Japan</a></td><td>3.98</td><td>152.91</td><td>31.06</td><td>152.91</td><td>43</td><td><a href="/StockBuy.php?symbol=EWJ">EWJ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IND" class="nav">India</a></td><td>3.32</td><td>92.93</td><td>24.84</td><td>168.81</td><td>26</td><td><a href="/StockBuy.php?symbol=INDA">INDA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=GBR" class="nav">UK</a></td><td>3.14</td><td>106.44</td><td>46.49</td><td>177</td><td>39</td><td><a href="/StockBuy.php?symbol=EWU">EWU</a></td></tr><tr><td><a href="/global-market-valuation.php?country=FRA" class="nav">France</a></td><td>2.86</td><td>121.96</td><td>27.63</td><td>130.01</td><td>33</td><td><a href="/StockBuy.php?symbol=EWQ">EWQ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CAN" class="nav">Canada</a></td><td>2.09</td><td>139.47</td><td>7.83</td><td>211.54</td><td>43</td><td><a href="/StockBuy.php?symbol=EWC">EWC</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ITA" class="nav">Italy</a></td><td>2.07</td><td>36.49</td><td>17.24</td><td>77.28</td><td>26</td><td><a href="/StockBuy.php?symbol=EWI">EWI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BRA" class="nav">Brazil</a></td><td>2.06</td><td>51.18</td><td>19.28</td><td>101.95</td><td>26</td><td><a href="/StockBuy.php?symbol=EWZ">EWZ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=RUS" class="nav">Russia</a></td><td>1.8</td><td>28.56</td><td>7.53</td><td>123.55</td><td>26</td><td><a href="/StockBuy.php?symbol=ERUS">ERUS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=KOR" class="nav">Korea</a></td><td>1.69</td><td>100.88</td><td>11.38</td><td>140.71</td><td>27</td><td><a href="/StockBuy.php?symbol=EWY">EWY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=AUS" class="nav">Australia</a></td><td>1.66</td><td>101.44</td><td>43.8</td><td>153.89</td><td>31</td><td><a href="/StockBuy.php?symbol=EWA">EWA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=MEX" class="nav">Mexico</a></td><td>1.66</td><td>35.07</td><td>13.43</td><td>45.09</td><td>32</td><td><a href="/StockBuy.php?symbol=EWW">EWW</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ESP" class="nav">Spain</a></td><td>1.44</td><td>54.86</td><td>25.05</td><td>126.48</td><td>30</td><td><a href="/StockBuy.php?symbol=EWP">EWP</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IDN" class="nav">Indonesia</a></td><td>1.32</td><td>40.03</td><td>4.51</td><td>57.15</td><td>33</td><td><a href="/StockBuy.php?symbol=EIDO">EIDO</a></td></tr><tr><td><a href="/global-market-valuation.php?country=NLD" class="nav">Netherlands</a></td><td>1.02</td><td>139.66</td><td>39</td><td>178.8</td><td>31</td><td><a href="/StockBuy.php?symbol=EWN">EWN</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHE" class="nav">Switzerland</a></td><td>0.86</td><td>243.07</td><td>54.68</td><td>297.14</td><td>33</td><td><a href="/StockBuy.php?symbol=EWL">EWL</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BEL" class="nav">Belgium</a></td><td>0.6</td><td>57.74</td><td>31.76</td><td>103.75</td><td>32</td><td><a href="/StockBuy.php?symbol=EWK">EWK</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SWE" class="nav">Sweden</a></td><td>0.55</td><td>159.05</td><td>25.21</td><td>215.17</td><td>33</td><td><a href="/StockBuy.php?symbol=EWD">EWD</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SGP" class="nav">Singapore</a></td><td>0.48</td><td>152.9</td><td>64.91</td><td>354.46</td><td>36</td><td><a href="/StockBuy.php?symbol=EWS">EWS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ZAF" class="nav">South Africa</a></td><td>0.36</td><td>308.82</td><td>94.79</td><td>338.97</td><td>28</td><td><a href="/StockBuy.php?symbol=EZA">EZA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=HKG" class="nav">Hong Kong</a></td><td>0.36</td><td>1198.1</td><td>104.82</td><td>1901.28</td><td>37</td><td><a href="/StockBuy.php?symbol=EWH">EWH</a></td></tr><tr><td><a href="/global-market-valuation.php?country=TUR" class="nav">Turkey</a></td><td>0.31</td><td>91.72</td><td>5.5</td><td>91.72</td><td>31</td><td><a href="/StockBuy.php?symbol=TUR">TUR</a></td></tr><tr><td><a href="/global-market-valuation.php?country=EGY" class="nav">Egypt</a></td><td>0.25</td><td>13.65</td><td>8.29</td><td>123.99</td><td>25</td><td><a href="/StockBuy.php?symbol=EGPT">EGPT</a></td></tr><tr><td><a href="/global-market-valuation.php?country=PAK" class="nav">Pakistan</a></td><td>0.23</td><td>12.48</td><td>5.82</td><td>49.63</td><td>26</td><td><a href="/StockBuy.php?symbol=PAK">PAK</a></td></tr></table><br />
+    <th>Historical Min. (%)</th><th>Historical Max. (%) </th><th>Years of Data</th><th>Country ETF</th></tr><tr><td><a href="/global-market-valuation.php?country=USA" class="nav">USA</a></td><td>26.49</td><td>158.8</td><td>32.7</td><td>199.5</td><td>53</td><td><a href="/StockBuy.php?symbol=SPY">SPY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHN" class="nav">China</a></td><td>17.12</td><td>61.35</td><td>0.23</td><td>156.87</td><td>33</td><td><a href="/StockBuy.php?symbol=MCHI">MCHI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=DEU" class="nav">Germany</a></td><td>4.23</td><td>57.65</td><td>18.46</td><td>76.61</td><td>36</td><td><a href="/StockBuy.php?symbol=EWG">EWG</a></td></tr><tr><td><a href="/global-market-valuation.php?country=JPN" class="nav">Japan</a></td><td>3.97</td><td>152.83</td><td>31.06</td><td>152.83</td><td>43</td><td><a href="/StockBuy.php?symbol=EWJ">EWJ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IND" class="nav">India</a></td><td>3.33</td><td>92.47</td><td>24.84</td><td>168.81</td><td>26</td><td><a href="/StockBuy.php?symbol=INDA">INDA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=GBR" class="nav">UK</a></td><td>3.17</td><td>106.8</td><td>46.49</td><td>177</td><td>39</td><td><a href="/StockBuy.php?symbol=EWU">EWU</a></td></tr><tr><td><a href="/global-market-valuation.php?country=FRA" class="nav">France</a></td><td>2.89</td><td>121.33</td><td>27.63</td><td>130.01</td><td>33</td><td><a href="/StockBuy.php?symbol=EWQ">EWQ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CAN" class="nav">Canada</a></td><td>2.11</td><td>139.56</td><td>7.83</td><td>211.54</td><td>43</td><td><a href="/StockBuy.php?symbol=EWC">EWC</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ITA" class="nav">Italy</a></td><td>2.09</td><td>36.39</td><td>17.24</td><td>77.28</td><td>26</td><td><a href="/StockBuy.php?symbol=EWI">EWI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BRA" class="nav">Brazil</a></td><td>2.07</td><td>51.25</td><td>19.28</td><td>101.95</td><td>26</td><td><a href="/StockBuy.php?symbol=EWZ">EWZ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=RUS" class="nav">Russia</a></td><td>1.81</td><td>28.56</td><td>7.53</td><td>123.55</td><td>26</td><td><a href="/StockBuy.php?symbol=ERUS">ERUS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=KOR" class="nav">Korea</a></td><td>1.69</td><td>100.48</td><td>11.38</td><td>140.71</td><td>27</td><td><a href="/StockBuy.php?symbol=EWY">EWY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=AUS" class="nav">Australia</a></td><td>1.69</td><td>101.63</td><td>43.8</td><td>153.89</td><td>31</td><td><a href="/StockBuy.php?symbol=EWA">EWA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=MEX" class="nav">Mexico</a></td><td>1.66</td><td>35.2</td><td>13.43</td><td>45.09</td><td>32</td><td><a href="/StockBuy.php?symbol=EWW">EWW</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ESP" class="nav">Spain</a></td><td>1.46</td><td>54.85</td><td>25.05</td><td>126.48</td><td>30</td><td><a href="/StockBuy.php?symbol=EWP">EWP</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IDN" class="nav">Indonesia</a></td><td>1.32</td><td>40.11</td><td>4.51</td><td>57.15</td><td>33</td><td><a href="/StockBuy.php?symbol=EIDO">EIDO</a></td></tr><tr><td><a href="/global-market-valuation.php?country=NLD" class="nav">Netherlands</a></td><td>1.03</td><td>139.88</td><td>39</td><td>178.8</td><td>31</td><td><a href="/StockBuy.php?symbol=EWN">EWN</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHE" class="nav">Switzerland</a></td><td>0.87</td><td>243.6</td><td>54.68</td><td>297.14</td><td>33</td><td><a href="/StockBuy.php?symbol=EWL">EWL</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BEL" class="nav">Belgium</a></td><td>0.61</td><td>57.62</td><td>31.76</td><td>103.75</td><td>32</td><td><a href="/StockBuy.php?symbol=EWK">EWK</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SWE" class="nav">Sweden</a></td><td>0.56</td><td>158.57</td><td>25.21</td><td>215.17</td><td>33</td><td><a href="/StockBuy.php?symbol=EWD">EWD</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SGP" class="nav">Singapore</a></td><td>0.48</td><td>154.08</td><td>64.91</td><td>354.46</td><td>36</td><td><a href="/StockBuy.php?symbol=EWS">EWS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ZAF" class="nav">South Africa</a></td><td>0.37</td><td>309.74</td><td>94.79</td><td>338.97</td><td>28</td><td><a href="/StockBuy.php?symbol=EZA">EZA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=HKG" class="nav">Hong Kong</a></td><td>0.36</td><td>1224.06</td><td>104.82</td><td>1901.28</td><td>37</td><td><a href="/StockBuy.php?symbol=EWH">EWH</a></td></tr><tr><td><a href="/global-market-valuation.php?country=TUR" class="nav">Turkey</a></td><td>0.31</td><td>94.02</td><td>5.5</td><td>94.02</td><td>31</td><td><a href="/StockBuy.php?symbol=TUR">TUR</a></td></tr><tr><td><a href="/global-market-valuation.php?country=EGY" class="nav">Egypt</a></td><td>0.25</td><td>13.66</td><td>8.29</td><td>123.99</td><td>25</td><td><a href="/StockBuy.php?symbol=EGPT">EGPT</a></td></tr><tr><td><a href="/global-market-valuation.php?country=PAK" class="nav">Pakistan</a></td><td>0.23</td><td>12.43</td><td>5.82</td><td>49.63</td><td>26</td><td><a href="/StockBuy.php?symbol=PAK">PAK</a></td></tr></table><br />
 
 <p>Historical minimum and maximum, and current ratio of total market cap over GDP<br>
 
@@ -3729,10 +3767,10 @@ stacking: 'normal'
 
             series: [{
 name: 'Max',
-data: [{y:40.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:95.97, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:18.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:0, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:75.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:70.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:8.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:72.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:40.79, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:50.77, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:17.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:94.99, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:39.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:52.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:10.02, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:71.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:39.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:54.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:46.01, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:56.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:201.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:30.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:703.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:110.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:37.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:40.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:95.52, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:18.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:0, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:76.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:70.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:8.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:71.98, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:40.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:50.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:17.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:94.99, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:40.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:52.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:71.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:38.92, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:53.54, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:46.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:56.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:200.38, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:29.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:677.22, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:110.33, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:37.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 },{
 name: 'Current',
-data: [{y:126, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:61, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:39, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:122, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:68, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:60, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:94, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:132, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:19, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:32, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:36, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:21, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:90, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:58, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:22, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:30, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:101, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:188, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:26, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:134, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:88, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:214, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:1093, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:86, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:5, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:7, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:126, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:61, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:39, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:122, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:68, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:60, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:94, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:132, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:19, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:32, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:36, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:21, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:89, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:58, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:22, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:30, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:101, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:189, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:26, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:133, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:89, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:215, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:1119, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:89, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:5, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:7, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 },{
 name: 'Min',
 color: '#FFF',
@@ -3999,7 +4037,7 @@ $('#six_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:8.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:5.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:5.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:0.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:1.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:1.94, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:0.27, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:1.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:0.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:0.24, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:0.46, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:0.42, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:0.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:1.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:0.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:1.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:0.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:0.52, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:8.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:5.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.97, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:5.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:0.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:1.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:1.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:0.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:1.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:0.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:0.24, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:0.46, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:0.42, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:0.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:1.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:0.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:1.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:0.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:0.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:0.52, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:0.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:0.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 }]
         },function(chart){
 
@@ -4260,7 +4298,7 @@ $('#seven_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:120.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:45.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:33.94, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:65.64, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:83.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:75.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:72.67, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:123.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:20.51, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:36.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:35.69, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:21.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:79.58, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:81.08, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:30.27, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:30.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:88.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:110, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:34.92, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:128.52, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:74.77, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:261.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:490.58, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:63.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:11.46, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:9.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+data: [{y:120.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:45.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:33.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:65.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:83.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:75.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:72.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:123.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:20.46, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:36.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:35.76, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:21.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:79.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:81.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:30.38, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:30.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:88.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:110.24, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:34.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:128.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:75.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:262.67, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:501.21, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:65.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:11.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:9.51, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 }]
         },function(chart){
 
@@ -4303,7 +4341,7 @@ data: [{y:120.6, url:'https://www.gurufocus.com/global-market-valuation.php?coun
 <p>We can see that this ratio also varies dramatically across different countries and swings wildly within each country's history. The table and chart below is the current ratio of TMC / (GDP + Total Assets of Central Bank) and its historical range.</p> 
 
 <table class="at" style="width: 100%; display: block; overflow: auto;"><tr><th>Country</th><th>GDP ($Trillion)</th><th>Total Assets ($Trillion)</th><th>TMC/(GDP + TA)(%)</th>
-    <th>Historical Min. (%)</th><th>Historical Max. (%) </th><th>Years of Data</th><th>Country ETF</th></tr><tr><td><a href="/global-market-valuation.php?country=USA" class="nav">USA</a></td><td>26.49</td><td>8.39</td><td>120.6</td><td>31.1</td><td>147.3</td><td>53</td><td><a href="/StockBuy.php?symbol=SPY">SPY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHN" class="nav">China</a></td><td>17.02</td><td>5.83</td><td>45.36</td><td>0.17</td><td>90.46</td><td>33</td><td><a href="/StockBuy.php?symbol=MCHI">MCHI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=DEU" class="nav">Germany</a></td><td>4.19</td><td>2.93</td><td>33.94</td><td>16.19</td><td>68.53</td><td>36</td><td><a href="/StockBuy.php?symbol=EWG">EWG</a></td></tr><tr><td><a href="/global-market-valuation.php?country=JPN" class="nav">Japan</a></td><td>3.98</td><td>5.29</td><td>65.64</td><td>28.02</td><td>130.27</td><td>43</td><td><a href="/StockBuy.php?symbol=EWJ">EWJ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IND" class="nav">India</a></td><td>3.32</td><td>0.37</td><td>83.66</td><td>21.17</td><td>145.44</td><td>26</td><td><a href="/StockBuy.php?symbol=INDA">INDA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=GBR" class="nav">UK</a></td><td>3.14</td><td>1.3</td><td>75.3</td><td>46.31</td><td>172.22</td><td>39</td><td><a href="/StockBuy.php?symbol=EWU">EWU</a></td></tr><tr><td><a href="/global-market-valuation.php?country=FRA" class="nav">France</a></td><td>2.86</td><td>1.94</td><td>72.67</td><td>26.22</td><td>113.98</td><td>33</td><td><a href="/StockBuy.php?symbol=EWQ">EWQ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CAN" class="nav">Canada</a></td><td>2.09</td><td>0.27</td><td>123.28</td><td>7.42</td><td>203.97</td><td>43</td><td><a href="/StockBuy.php?symbol=EWC">EWC</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ITA" class="nav">Italy</a></td><td>2.07</td><td>1.61</td><td>20.51</td><td>12.67</td><td>67.22</td><td>26</td><td><a href="/StockBuy.php?symbol=EWI">EWI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BRA" class="nav">Brazil</a></td><td>2.06</td><td>0.85</td><td>36.3</td><td>16.14</td><td>79.03</td><td>26</td><td><a href="/StockBuy.php?symbol=EWZ">EWZ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=RUS" class="nav">Russia</a></td><td>1.8</td><td>0.6</td><td>21.4</td><td>6.64</td><td>87.26</td><td>26</td><td><a href="/StockBuy.php?symbol=ERUS">ERUS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=KOR" class="nav">Korea</a></td><td>1.69</td><td>0.45</td><td>79.58</td><td>9.1</td><td>108.98</td><td>27</td><td><a href="/StockBuy.php?symbol=EWY">EWY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=AUS" class="nav">Australia</a></td><td>1.66</td><td>0.42</td><td>81.08</td><td>40.74</td><td>141.12</td><td>31</td><td><a href="/StockBuy.php?symbol=EWA">EWA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=MEX" class="nav">Mexico</a></td><td>1.66</td><td>0.26</td><td>30.27</td><td>12.12</td><td>39.38</td><td>32</td><td><a href="/StockBuy.php?symbol=EWW">EWW</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ESP" class="nav">Spain</a></td><td>1.44</td><td>1.12</td><td>30.9</td><td>20.41</td><td>110.25</td><td>30</td><td><a href="/StockBuy.php?symbol=EWP">EWP</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IDN" class="nav">Indonesia</a></td><td>1.32</td><td>0.16</td><td>35.69</td><td>3.91</td><td>49.35</td><td>33</td><td><a href="/StockBuy.php?symbol=EIDO">EIDO</a></td></tr><tr><td><a href="/global-market-valuation.php?country=NLD" class="nav">Netherlands</a></td><td>1.02</td><td>0.59</td><td>88.59</td><td>33.58</td><td>155.07</td><td>31</td><td><a href="/StockBuy.php?symbol=EWN">EWN</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHE" class="nav">Switzerland</a></td><td>0.86</td><td>1.03</td><td>110</td><td>48.13</td><td>241.9</td><td>33</td><td><a href="/StockBuy.php?symbol=EWL">EWL</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BEL" class="nav">Belgium</a></td><td>0.6</td><td>0.39</td><td>34.92</td><td>23.01</td><td>85.04</td><td>32</td><td><a href="/StockBuy.php?symbol=EWK">EWK</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SWE" class="nav">Sweden</a></td><td>0.55</td><td>0.13</td><td>128.52</td><td>22.15</td><td>167.58</td><td>33</td><td><a href="/StockBuy.php?symbol=EWD">EWD</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SGP" class="nav">Singapore</a></td><td>0.48</td><td>0.5</td><td>74.77</td><td>35.72</td><td>177</td><td>36</td><td><a href="/StockBuy.php?symbol=EWS">EWS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ZAF" class="nav">South Africa</a></td><td>0.36</td><td>0.07</td><td>261.89</td><td>86.93</td><td>292.12</td><td>28</td><td><a href="/StockBuy.php?symbol=EZA">EZA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=HKG" class="nav">Hong Kong</a></td><td>0.36</td><td>0.52</td><td>490.58</td><td>73.9</td><td>793.7</td><td>37</td><td><a href="/StockBuy.php?symbol=EWH">EWH</a></td></tr><tr><td><a href="/global-market-valuation.php?country=TUR" class="nav">Turkey</a></td><td>0.31</td><td>0.14</td><td>63.49</td><td>1.33</td><td>64.37</td><td>31</td><td><a href="/StockBuy.php?symbol=TUR">TUR</a></td></tr><tr><td><a href="/global-market-valuation.php?country=EGY" class="nav">Egypt</a></td><td>0.25</td><td>0.05</td><td>11.46</td><td>7.03</td><td>102.96</td><td>25</td><td><a href="/StockBuy.php?symbol=EGPT">EGPT</a></td></tr><tr><td><a href="/global-market-valuation.php?country=PAK" class="nav">Pakistan</a></td><td>0.23</td><td>0.07</td><td>9.55</td><td>4.99</td><td>41.62</td><td>26</td><td><a href="/StockBuy.php?symbol=PAK">PAK</a></td></tr></table><br />
+    <th>Historical Min. (%)</th><th>Historical Max. (%) </th><th>Years of Data</th><th>Country ETF</th></tr><tr><td><a href="/global-market-valuation.php?country=USA" class="nav">USA</a></td><td>26.49</td><td>8.39</td><td>120.6</td><td>31.1</td><td>147.3</td><td>53</td><td><a href="/StockBuy.php?symbol=SPY">SPY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHN" class="nav">China</a></td><td>17.12</td><td>5.87</td><td>45.7</td><td>0.17</td><td>90.46</td><td>33</td><td><a href="/StockBuy.php?symbol=MCHI">MCHI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=DEU" class="nav">Germany</a></td><td>4.23</td><td>2.97</td><td>33.9</td><td>16.19</td><td>68.53</td><td>36</td><td><a href="/StockBuy.php?symbol=EWG">EWG</a></td></tr><tr><td><a href="/global-market-valuation.php?country=JPN" class="nav">Japan</a></td><td>3.97</td><td>5.28</td><td>65.61</td><td>28.02</td><td>130.27</td><td>43</td><td><a href="/StockBuy.php?symbol=EWJ">EWJ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IND" class="nav">India</a></td><td>3.33</td><td>0.37</td><td>83.25</td><td>21.17</td><td>145.44</td><td>26</td><td><a href="/StockBuy.php?symbol=INDA">INDA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=GBR" class="nav">UK</a></td><td>3.17</td><td>1.31</td><td>75.55</td><td>46.31</td><td>172.22</td><td>39</td><td><a href="/StockBuy.php?symbol=EWU">EWU</a></td></tr><tr><td><a href="/global-market-valuation.php?country=FRA" class="nav">France</a></td><td>2.89</td><td>1.96</td><td>72.3</td><td>26.22</td><td>113.98</td><td>33</td><td><a href="/StockBuy.php?symbol=EWQ">EWQ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CAN" class="nav">Canada</a></td><td>2.11</td><td>0.28</td><td>123.35</td><td>7.42</td><td>203.97</td><td>43</td><td><a href="/StockBuy.php?symbol=EWC">EWC</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ITA" class="nav">Italy</a></td><td>2.09</td><td>1.63</td><td>20.46</td><td>12.67</td><td>67.22</td><td>26</td><td><a href="/StockBuy.php?symbol=EWI">EWI</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BRA" class="nav">Brazil</a></td><td>2.07</td><td>0.85</td><td>36.35</td><td>16.14</td><td>79.03</td><td>26</td><td><a href="/StockBuy.php?symbol=EWZ">EWZ</a></td></tr><tr><td><a href="/global-market-valuation.php?country=RUS" class="nav">Russia</a></td><td>1.81</td><td>0.61</td><td>21.4</td><td>6.64</td><td>87.26</td><td>26</td><td><a href="/StockBuy.php?symbol=ERUS">ERUS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=KOR" class="nav">Korea</a></td><td>1.69</td><td>0.45</td><td>79.26</td><td>9.1</td><td>108.98</td><td>27</td><td><a href="/StockBuy.php?symbol=EWY">EWY</a></td></tr><tr><td><a href="/global-market-valuation.php?country=AUS" class="nav">Australia</a></td><td>1.69</td><td>0.42</td><td>81.23</td><td>40.74</td><td>141.12</td><td>31</td><td><a href="/StockBuy.php?symbol=EWA">EWA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=MEX" class="nav">Mexico</a></td><td>1.66</td><td>0.26</td><td>30.38</td><td>12.12</td><td>39.38</td><td>32</td><td><a href="/StockBuy.php?symbol=EWW">EWW</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ESP" class="nav">Spain</a></td><td>1.46</td><td>1.13</td><td>30.89</td><td>20.41</td><td>110.25</td><td>30</td><td><a href="/StockBuy.php?symbol=EWP">EWP</a></td></tr><tr><td><a href="/global-market-valuation.php?country=IDN" class="nav">Indonesia</a></td><td>1.32</td><td>0.16</td><td>35.76</td><td>3.91</td><td>49.35</td><td>33</td><td><a href="/StockBuy.php?symbol=EIDO">EIDO</a></td></tr><tr><td><a href="/global-market-valuation.php?country=NLD" class="nav">Netherlands</a></td><td>1.03</td><td>0.6</td><td>88.73</td><td>33.58</td><td>155.07</td><td>31</td><td><a href="/StockBuy.php?symbol=EWN">EWN</a></td></tr><tr><td><a href="/global-market-valuation.php?country=CHE" class="nav">Switzerland</a></td><td>0.87</td><td>1.05</td><td>110.24</td><td>48.13</td><td>241.9</td><td>33</td><td><a href="/StockBuy.php?symbol=EWL">EWL</a></td></tr><tr><td><a href="/global-market-valuation.php?country=BEL" class="nav">Belgium</a></td><td>0.61</td><td>0.4</td><td>34.85</td><td>23.01</td><td>85.04</td><td>32</td><td><a href="/StockBuy.php?symbol=EWK">EWK</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SWE" class="nav">Sweden</a></td><td>0.56</td><td>0.13</td><td>128.14</td><td>22.15</td><td>167.58</td><td>33</td><td><a href="/StockBuy.php?symbol=EWD">EWD</a></td></tr><tr><td><a href="/global-market-valuation.php?country=SGP" class="nav">Singapore</a></td><td>0.48</td><td>0.5</td><td>75.34</td><td>35.72</td><td>177</td><td>36</td><td><a href="/StockBuy.php?symbol=EWS">EWS</a></td></tr><tr><td><a href="/global-market-valuation.php?country=ZAF" class="nav">South Africa</a></td><td>0.37</td><td>0.07</td><td>262.67</td><td>86.93</td><td>292.12</td><td>28</td><td><a href="/StockBuy.php?symbol=EZA">EZA</a></td></tr><tr><td><a href="/global-market-valuation.php?country=HKG" class="nav">Hong Kong</a></td><td>0.36</td><td>0.52</td><td>501.21</td><td>73.9</td><td>793.7</td><td>37</td><td><a href="/StockBuy.php?symbol=EWH">EWH</a></td></tr><tr><td><a href="/global-market-valuation.php?country=TUR" class="nav">Turkey</a></td><td>0.31</td><td>0.14</td><td>65.09</td><td>1.33</td><td>65.09</td><td>31</td><td><a href="/StockBuy.php?symbol=TUR">TUR</a></td></tr><tr><td><a href="/global-market-valuation.php?country=EGY" class="nav">Egypt</a></td><td>0.25</td><td>0.05</td><td>11.47</td><td>7.03</td><td>102.96</td><td>25</td><td><a href="/StockBuy.php?symbol=EGPT">EGPT</a></td></tr><tr><td><a href="/global-market-valuation.php?country=PAK" class="nav">Pakistan</a></td><td>0.23</td><td>0.07</td><td>9.51</td><td>4.99</td><td>41.62</td><td>26</td><td><a href="/StockBuy.php?symbol=PAK">PAK</a></td></tr></table><br />
 
 <p>Historical minimum and maximum, and current ratio of TMC / (GDP + Total Assets of Central Bank)<br>
 
@@ -4553,10 +4591,10 @@ $('#fifteen_embed_close').click(function(event) {
 
             series: [{
 	name: 'Max',
-	data: [{y:26.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:45.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:34.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:64.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:61.78, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:96.92, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:41.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:80.69, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:46.71, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:42.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:13.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:65.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:29.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:60.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:79.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:66.48, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:131.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:50.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:39.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:102.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:30.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:303.12, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:91.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:32.07, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+	data: [{y:26.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:44.76, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:34.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:64.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:62.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:96.67, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:41.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:80.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:46.76, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:42.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:13.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:65.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:29.72, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:59.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:79.36, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:66.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:131.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:50.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:39.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:101.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:29.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:292.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:91.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:32.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 	},{
 	name: 'Current',
-	data: [{y:90, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:45, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:18, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:38, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:62, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:29, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:46, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:116, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:20, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:32, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:15, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:70, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:40, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:18, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:10, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:55, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:62, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:12, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:106, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:39, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:175, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:417, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:62, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:4, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:5, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
+	data: [{y:90, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:46, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:18, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:38, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:62, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:29, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:46, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:116, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:20, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:32, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:15, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:70, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:40, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:18, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:10, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:55, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:62, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:12, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:106, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:40, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:176, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:427, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:64, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'},{y:4, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:5, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'}]
 	},{
 	name: 'Min',
 	color: '#FFF',
@@ -4777,7 +4815,7 @@ $('#eight_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -4842,7 +4880,7 @@ $('#eight_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:5.54, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:3.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:4.82, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:2.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.29, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:3.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:1.81, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:1.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:3.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:2.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:3.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:4.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:3.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:2.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:0.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:5.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:7.95, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:11.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:4.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:5.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:5.78, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:4.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:4.27, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:13.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:5.54, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:3.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:4.82, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:2.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.29, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:3.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:1.81, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:1.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:3.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:2.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:3.66, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:4.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:2.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:3.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:0.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:5.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:7.95, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:11.86, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:4.89, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:5.61, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:5.78, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:4.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:4.27, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:13.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -5057,7 +5095,7 @@ $('#nine_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -5122,7 +5160,7 @@ $('#nine_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:4.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:4.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:4.65, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:2.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:2.16, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:3.64, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:2.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:3.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:1.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:1.87, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:3.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:1.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:18.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:11.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:2.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:8.79, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:2.98, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:1.71, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:0.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.72, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:4.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:4.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:4.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:2.58, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:2.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.18, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:3.59, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:2.57, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:3.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:1.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:3.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:1.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:1.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:18.83, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:11.75, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:2.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:8.73, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:2.98, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:1.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:2.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:0.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:3.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.26, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -5336,7 +5374,7 @@ $('#ten_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -5401,7 +5439,7 @@ $('#ten_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:4.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:2.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.65, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:3.68, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.05, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:-1.24, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:-1.44, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:-1.39, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:-2.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:-3.16, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:-1.63, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:-1.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:-4.06, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:-4.29, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-6.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:7.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:3.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:-0.42, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:2.14, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.56, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:0.67, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:-0.51, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:-1.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:-13.21, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:4.37, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:2.16, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:0.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:3.69, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:1.01, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:-1.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:-1.41, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:-1.41, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:-2.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:-3.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:-1.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:-1.88, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:-4.04, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:-4.24, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-4.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-6.27, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:7.33, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:3.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:-0.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:2.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:0.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:0.62, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:-0.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:-1.23, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:-13.47, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -5611,7 +5649,7 @@ $('#eleven_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -5676,7 +5714,7 @@ $('#eleven_embed_close').click(function(event) {
 
             series: [{
 name: 'current',
-data: [{y:5.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:5.11, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:2.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:7.49, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:-0.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:2.32, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:2.28, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.33, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:-2.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:-0.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:-2.21, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:-2.96, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:-2.21, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-1.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-1.76, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:7.98, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:3.43, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:-0.93, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:1.84, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:-0.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:0.45, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:-0.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:-0.99, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:-11.57, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+data: [{y:5.09, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:5.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:2.13, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:7.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:3.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:-0.55, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:2.35, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:2.25, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:0.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:-2.31, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:-1.19, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:-2.16, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:-2.94, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:-1.54, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-2.22, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-1.75, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:3.15, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:8.03, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:3.42, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:-0.95, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:1.82, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:-0.34, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:0.41, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:-0.54, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:-1.02, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:-11.85, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 }]
         },function(chart){
 
@@ -5889,7 +5927,7 @@ $('#twelve_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -5954,7 +5992,7 @@ $('#twelve_embed_close').click(function(event) {
 
             series: [{
 		name: 'current',
-		data: [{y:14.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:10.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:10.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:7.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:1.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:-4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:28.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:26.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:13.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:8.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+		data: [{y:13.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:10.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:10.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:9.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:7.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:4.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:4.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:3.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:1.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:1.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:-4.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:28.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:13.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:4.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 		}]
         },function(chart){
 
@@ -6164,7 +6202,7 @@ $('#thirteen_embed_close').click(function(event) {
             	lineWidth : 0,
 
             	tickLength: 0,
-                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','Netherlands','France','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
+                categories: ['Singapore','Belgium','Australia','Spain','UK','Canada','Italy','Switzerland','Germany','Sweden','Hong Kong','Korea','USA','France','Netherlands','Japan','Russia','Pakistan','Egypt','Brazil','Indonesia','China','Mexico','India','South Africa','Turkey'],
                 labels: {
                 	align: 'right',
 					rotation: -90,
@@ -6229,7 +6267,7 @@ $('#thirteen_embed_close').click(function(event) {
 
             series: [{
 	name: 'current',
-	data: [{y:14.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:13.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:11.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:13.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:9.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:5.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:8.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:3.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:4.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:0.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:27.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:6.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:6.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
+	data: [{y:14.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=SGP'},{y:13.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=BEL'},{y:11.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=AUS'},{y:13.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=ESP'},{y:9.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=GBR'},{y:5.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=CAN'},{y:8.3, url:'https://www.gurufocus.com/global-market-valuation.php?country=ITA'},{y:7.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHE'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=DEU'},{y:4.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=SWE'},{y:4.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=HKG'},{y:2.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=KOR'},{y:2.8, url:'https://www.gurufocus.com/global-market-valuation.php?country=USE'},{y:4.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=FRA'},{y:3.5, url:'https://www.gurufocus.com/global-market-valuation.php?country=NLD'},{y:0.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=JPN'},{y:27.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=RUS'},{y:27.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=PAK'},{y:17.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=EGY'},{y:12.7, url:'https://www.gurufocus.com/global-market-valuation.php?country=BRA'},{y:10.4, url:'https://www.gurufocus.com/global-market-valuation.php?country=IDN'},{y:7.1, url:'https://www.gurufocus.com/global-market-valuation.php?country=CHN'},{y:7.2, url:'https://www.gurufocus.com/global-market-valuation.php?country=MEX'},{y:7.0, url:'https://www.gurufocus.com/global-market-valuation.php?country=IND'},{y:6.9, url:'https://www.gurufocus.com/global-market-valuation.php?country=ZAF'},{y:5.6, url:'https://www.gurufocus.com/global-market-valuation.php?country=TUR'}]
 	}]
         },function(chart){
 
@@ -6294,4 +6332,992 @@ google_ad_height = 280;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
 <div class="clear"></div>
-<script>(function(){var js = "window['__CF$cv$params']={r:'7d77652669ec211d',m:'TEkFyngWhoQnfkM2AAwes5vGSdGKnk5c3s0KjXVX6nc-1686796269-0-Aadx7q7wB1IPWt6FdIXrJrNg+/l7wC0WZjE1O57cayIf'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script>
+</div></div><div>
+      <div
+    id="chatbutton"
+    onclick="openSupport()"><svg
+      id="svg_online_"
+      style="filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 640 640"
+      width="60"
+      height="60">
+      <defs>
+        <path
+          d="M628.58 320C628.58 490.64 490.31 629.18 320 629.18C149.69 629.18 11.42 490.64 11.42 320C11.42 149.36 149.69 10.82 320 10.82C490.31 10.82 628.58 149.36 628.58 320Z"
+          id="i8VVhIQhAy"/>
+        <path
+          d="M154.39 327.31C145.47 242.82 213.28 166.39 305.86 156.61C398.44 146.83 480.72 207.38 489.65 291.88C498.58 376.38 430.78 452.8 338.2 462.58C315.71 464.96 293.83 463.18 273.46 457.94C269.61 461.08 250.36 476.82 215.72 505.14L217.78 432.34C178.58 391.28 157.45 356.27 154.39 327.31Z"
+          id="c2VPbzTLxw"/>
+        <path
+          d="M259.47 304.13C259.47 316.88 249.12 327.24 236.37 327.24C223.62 327.24 213.27 316.88 213.27 304.13C213.27 291.38 223.62 281.03 236.37 281.03C249.12 281.03 259.47 291.38 259.47 304.13Z"
+          id="bpomRosYj"/>
+        <path
+          d="M345.13 304.13C345.13 316.88 334.77 327.24 322.02 327.24C309.27 327.24 298.92 316.88 298.92 304.13C298.92 291.38 309.27 281.03 322.02 281.03C334.77 281.03 345.13 291.38 345.13 304.13Z"
+          id="cS831ETxc"/>
+        <path
+          d="M431.94 304.13C431.94 316.88 421.59 327.24 408.84 327.24C396.09 327.24 385.73 316.88 385.73 304.13C385.73 291.38 396.09 281.03 408.84 281.03C421.59 281.03 431.94 291.38 431.94 304.13Z"
+          id="a1W8EpizTc"/>
+      </defs>
+      <g>
+        <g>
+          <g>
+            <use
+              xlink:href="#i8VVhIQhAy"
+              opacity="1"
+              fill="#4384f5"
+              fill-opacity="1"/>
+          </g>
+          <g>
+            <use
+              xlink:href="#c2VPbzTLxw"
+              opacity="1"
+              fill="#FFFFFF"
+              fill-opacity="1"/>
+          </g>
+          <g>
+            <use
+              xlink:href="#bpomRosYj"
+              opacity="1"
+              fill="#4384f5"
+              fill-opacity="1"/>
+          </g>
+          <g>
+            <use
+              xlink:href="#cS831ETxc"
+              opacity="1"
+              fill="#4384f5"
+              fill-opacity="1"/>
+          </g>
+          <g>
+            <use
+              xlink:href="#a1W8EpizTc"
+              opacity="1"
+              fill="#4384f5"
+              fill-opacity="1"/>
+          </g>
+        </g>
+      </g>
+  </svg></div>
+    <div style="text-align:center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal1200 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:1200px;height:90px"
+     data-ad-client="ca-pub-4020868656364652"
+     data-ad-slot="7043768341"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+        <div class="clear"></div>
+
+                <div id="content3" style="background-color: #F5F8FD;padding:3px; max-width: calc(100% - 10px) !important;">
+
+                    <!--
+            <div>
+                     <a href="https://www.gurufocus.com/membership/upgrade.php?ref=bottom"><h1>GuruFocus Premium Plus Membership</h1></a>
+            </div>
+            -->
+                    <div class="clear"></div>
+        </div>
+
+        <!-- end content -->
+        </div>
+<div id="footer">
+    <div class="footergrid">
+        <ul class="footerul">
+            <li class="footerli">
+                    <a href="/">Home</a>&nbsp;&nbsp;<a href="/about">About</a>&nbsp;&nbsp; <a href="/jobs.php">Jobs</a>&nbsp;&nbsp;  <a href="/sitemap.php">Site Map</a>&nbsp;&nbsp;&nbsp; <a href="/term-of-use">Term of Use</a>&nbsp;&nbsp;&nbsp; <a href="/privacy-policy">Privacy Policy</a>&nbsp;&nbsp;&nbsp; <a href="/app.php" target="_blank">Mobile App</a> &nbsp;&nbsp;&nbsp;  <a href="https://www.gurufocus.com/referral-program">Referral Program</a>&nbsp;&nbsp;&nbsp; <a href="/partner-program">Partner Program</a>&nbsp;&nbsp;&nbsp; <a href="/faq.php">FAQ</a>&nbsp;&nbsp;&nbsp; <a href="/ticket/open.php" target="_blank">Contact Us</a>
+                &nbsp;&nbsp;<a href="https://www.gurufocus.cn/" target="_blank">中文</a>&nbsp;&nbsp;<a href="https://www.gurufocus.com/screener">All-In-One Screener</a>
+
+            </li>
+             <li class="footerli">
+                    <a href="https://www.gurufocus.com/stocks">Stock List</a>&nbsp;&nbsp; <a href="https://www.gurufocus.com/guru/list">Guru List</a>&nbsp;&nbsp;  <a href="https://www.gurufocus.com/insiders">Insider List</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/insider/summary">Insider Trade</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/economic_indicators">Economic Indicators</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/industry/usa" target="_blank">Industry Data</a> &nbsp;&nbsp;&nbsp;  <a href="https://www.gurufocus.com/stock/AAPL/dcf">DCF Calculator</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/discussion">Discussion Board</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/pricing">Plans</a>&nbsp;&nbsp;&nbsp; <a href="https://www.gurufocus.com/excel-add-in" target="_blank">Excel Add-In</a>
+                &nbsp;&nbsp;<a href="https://www.gurufocus.com/google-sheets-add-on" target="_blank">Google Sheets Add-on</a>
+
+            </li>
+            <li class="footerli">
+                &copy; 2004-2023                GuruFocus.com, LLC. All Rights Reserved.
+            </li>
+            <li class="footerli">
+                <p>
+                    Disclaimers:  GuruFocus.com is not operated by a broker or a dealer. It has an affiliated registered investment adviser, which serves as the subadviser to an exchange traded fund. This investment adviser does not provide advice to individual investors. Under no circumstances does any information posted on GuruFocus.com represent a recommendation to buy or sell a security. The information on this site, and in its related newsletters, is not intended to be, nor does it constitute investment advice or recommendations. The individuals or entities selected as "gurus" may buy and sell securities before and after any particular article and report and information herein is published, with respect to the securities discussed in any article and report posted herein. Gurus may be added or dropped from the GuruFocus site at any time. In no event shall GuruFocus.com be liable to any member, guest or third party for any damages of any kind arising out of the use of any content or other material published or available on GuruFocus.com, or relating to the use of, or inability to use, GuruFocus.com or any content, including, without limitation, any investment losses, lost profits, lost opportunity, special, incidental, indirect, consequential or punitive damages. Past performance is a poor indicator of future performance. The information on this site, and in its related newsletters, is not intended to be, nor does it constitute investment advice or recommendations. The information on this site is in no way guaranteed for completeness, accuracy or in any other way. The gurus listed in this website are not affiliated with GuruFocus.com, LLC. Stock quotes provided by InterActive Data. Fundamental company data provided by Morningstar, updated daily.
+                </p>
+            </li>
+        </ul>
+    </div><!--end footergrid -->
+</div><!--end footer -->
+
+</div>
+
+<div id="fb-root"></div>
+
+<div id="g_id_onload"
+     data-client_id="476916250870-vd0h3qms55eo8gp4sn454t2treesle3d.apps.googleusercontent.com"
+     data-login_uri="https://your.domain/your_login_endpoint"
+     data-your_own_param_1_to_login="any_value"
+     data-your_own_param_2_to_login="any_value">
+</div>
+
+
+<link media="screen" rel="stylesheet" href="//apis.gurufocus.com/css/colorbox.css" />
+
+
+<script async language="javascript" src="//apis.gurufocus.com/js/jquery.colorbox.js" type="text/javascript"></script>
+<script async type="text/javascript" src="//apis.gurufocus.com/js/jquery.form.js"></script>
+<script async type="text/javascript" src="//apis.gurufocus.com/js/guru_common.js?2022.12.12"></script>
+
+
+<script>
+jQuery(function(){
+var timer = setTimeout(function(){
+jQuery.colorbox({innerWidth:"600px", innerHeight:"500px", iframe:false,href:"/modules/pop_register.php?s="});
+}, 5000);
+
+});
+
+$(document).bind("cbox_complete", function(){
+    var href = $.colorbox.element().attr("href");
+    if (href) {
+        _gaq.push(["_trackPageview", href]);
+    }
+});
+
+</script>
+
+<script>(function(){var js = "window['__CF$cv$params']={r:'7d7fa262dd71195f',m:'a1k0OrCyt14Dq8y5ccDWHfJ45zDf.nnYC99QHSscO24-1686882663-0-ASkGK2djEhZEdMgFrxaj39X9Wl0Wh5qzI5gZHlWNUTlG'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</html>
+
+</body></html>      
+<div class="hidden">
+ <div id="watchlist-form" title="Add to portfolio">
+        <form id="watchlistform">
+            <p>Select portfolio(s):</p>
+            <ul>
+                <div style="width:auto;max-height:400px;overflow-x:hidden;overflow-y:auto;" id="userportfoliodiv">
+                    <div align="left" id='stock_port_p'>
+                        <li><img src='https://static.gurufocus.com/images/horizontal_loading.gif' alt='Loading...' /></li>
+                    </div>
+                </div>
+                <li>
+                    <label for="portid_0"><INPUT TYPE="checkbox" NAME="selectportfolio" id="portid_0" VALUE="0" />
+                        Create a new portfolio</label>
+                        <input type="text" name="newportfolioname" id="newportfolioname" size="20" />
+                </li>
+            </ul>
+
+            <p>Why you are interested?</p>
+            <textarea rows="2" cols="45" class="text ui-widget-content ui-corner-all" id="watchlistnotes"></textarea>
+        </form>
+        <p class="validateTips" align="left" style="font-size:10px;">
+            Your selection and notes will be stored in your <a href="/ic/space.php?do=portfolio&view=me">portfolio</a>.
+        </p>
+    </div>
+    
+    <div id="watch_area">
+        <div style='float:left; border: 1px solid #a0e47e; padding: 3px;background-color: #eeeeee'><a class='nav' href='/login_signup.php'>Login to add portfolio</a></div>
+    </div> 
+
+    <div id="guru-dialog-message1" title="Guru added"></div>
+</div>
+<script type="text/javascript" language="javascript" src="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+<script>
+	function CreateToolTips_4_Guru(selector)
+	{
+		//.gurus_tp 'a[href*="?GuruName="]'
+		$(selector).qtip({
+			position: {
+				effect: false,
+				viewport: $(window)
+			},
+			content: {
+				text: function(event, api){
+					if(($(this).attr('href')).indexOf("?GuruName=") > -1){
+						var pos = ($(this).attr('href')).indexOf("?GuruName=");
+						var guru = ($(this).attr('href')).substring(pos+10);
+						if(guru.indexOf("&")>-1)guru=guru.substring(0, guru.indexOf("&"));
+					}else{
+						var guru = $(this).attr('title');
+					}
+					$.ajax({
+						url: '/modules/ajax/gurus_tp.php',
+						type: 'GET',
+						dataType: 'json',
+						data: {
+							s: guru
+						}
+					})
+					.then(function(data){
+						//<h2 style="line-height:120%">
+						       
+						var tp_dis = '<div><table style="width:100%; border-spacing: 0px;"><tbody><tr>';
+			             
+						tp_dis += '<td><table><tbody><tr><td><strong>' + data.GuruName + '</strong></td></tr> ';
+						var gurufirm = data.firm;
+						tp_dis += '<tr><td>' + ((gurufirm.length>0) ? data.firm : data.GuruName) + '</td></tr>';       
+						tp_dis += '<tr><td><p style="fontsize:6px;margin:0px;padding:0px;"><a href="javascript:;" id="' + data.guru_id + "_" + data.GuruName + '" class="add_g" value="' + guru + '" title="Add to your default guru list"><img src="https://static.gurufocus.com/images/icons/gray/png/sq_plus_icon&amp;16.png">Add to Guru List</a></p></td></tr></tbody></table>';               
+						//Add to My Gurus                        
+                        if(data.Picture && data.Picture.indexOf('/gurupics/1/') > 0)tp_dis += '</td><td><img src="' + data.Picture + '" class="pic"></td>';
+				        tp_dis += '</tr></tbody></table></div>';      
+				           
+						tp_dis += '<hr style="margin:6px 0;color:#CCC;"><div style="font-weight:bold;text-align:center;"><a href="/holdings.php?GuruName=' + data.GuruName + '&tps_gu">Current Portfolio</a> | <a href="/StockBuy.php?GuruName=' + data.GuruName + '&tps_gu">Stock Picks</a> | <a href="/holdings.php?GuruName=' + data.GuruName + '&tab=ptoph&tps_gu">Past Top Holdings</a></div>';     
+                        // style="font-weight:bold;text-align:center;
+						tp_dis += '<hr style="margin:6px 0;color:#CCC;"><table style="font-size:10px;width:100%;">'; 
+						tp_dis += '<tr><td>Portfolio Date</td><th><font class="nav modally">' + data.portdate + '</font></th><td>Latest Update</td><th><font class="nav modally">' + data.last_update + '</font></th></tr>';
+						tp_dis += '<tr><td>No. of Stocks</td><th><font class="nav modally">' + data.number_of_stocks + '</font></th><td>Total Value</td><th><font class="nav modally">$' + data.equity + 'Mil</font></th></tr>';             
+						tp_dis += '<tr><td>No. of New Stocks</td><th><font class="nav modally">' + data.num_new + '</font></th><td>Q/Q Turnover</td><th><font class="nav modally">' + data.turnover + '</font></th></tr>';
+						
+						 api.set('content.text', tp_dis);
+					},function(xhr, status, error){
+						api.set('content.text', 'No information provided.');
+					});
+					
+					       
+					//Google Analytics
+					// ga('send', {
+					// 	hitType: 'event',
+					// 	eventCategory: 'Tooltip',
+					// 	eventAction: 'open',
+					// 	eventLabel: 'Tooltip for Guru'
+					// });
+					
+					return 'Loading...'
+				}
+			},
+			hide: {
+				fixed: true,
+				delay: 500
+			},
+			style:{
+				classes: 'myCustomClass_guru'
+			}
+		});
+	}
+	$.each(['a[href*="StockBuy.php?GuruName="]', 'a[href*="holdings.php?GuruName="]', 'a[href*="ListGuru.php?GuruName"]'], function(key, value){
+		//console.log(value);
+		CreateToolTips_4_Guru(value);
+	});
+	$(document.body).on('click', '.add_g', function(){
+		//console.log('testclick');
+		var UserId = "0";
+		var Ustatus = "0";
+		var Guru = $(this).attr('id');
+		var GuruId = Guru.substring(0, Guru.indexOf('_'));
+		var GuruName = Guru.substring(Guru.indexOf('_')+1);
+		$('.gurus_tp').qtip('hide');
+		//addguru_list(GuruId, UserId, GuruName, Ustatus);
+		if(UserId>0 && Ustatus>=3){
+			$.post('/modules/guru/guru_list.php?action=add_guru', 'id=' + GuruId, function(){
+
+				var txt = '<p><img src="https://static.gurufocus.com/images/icons/gray/png/checkmark_icon&16.png"> ' + GuruName + ' has been successfully added into <a href="/ListGuru.php">your Personalized Guru List</a>.</p>';
+                    
+				$("#guru-dialog-message1").html(txt);       
+				$("#guru-dialog-message1").dialog({
+					resizable: false,
+					modal:true,
+					title: "Guru Added",
+					height:200,
+					width: 200        					
+				});			
+			});
+		}else{
+			var txt = 'This feature is only available for Premium Members, please sign up for<a href="/membership/membership_upgrade.php" class="articletitle" target="_blank">GuruFocus Premium Membership</a><br><br><a href="/membership/upgrade.php?ref=mindex_oops" rel="nofollow" class="trial">7-Day Free Trial Now</a>';
+			$("#guru-dialog-message1").html(txt); 
+			$("#guru-dialog-message1").dialog({
+					resizable: false,
+					modal:true,
+					title: "Warning",
+					height:150,
+					width: 400   
+			});
+		}
+
+		
+	});
+	
+</script>
+
+<script>
+
+
+//
+function CreateToolTips(parent) {
+    // console.log("Inside function.");
+    var elements ;
+    if(parent){
+    	elements = parent.find('.stocks_tp');
+    }else{
+    	elements = $('.stocks_tp');
+    }
+    elements.qtip({
+    	position: {
+    	  effect: false,
+      	  viewport: $(window)
+    	},
+		  content: {
+	        text: function(event, api) {
+	        	if(($(this).attr('href')).indexOf("/stock/") > -1){
+							var s = (($(this).attr('href')).substring(7));
+							if (s.indexOf("/summary") > -1){
+								s = s.replace('/summary', '')
+							}
+	        	}else{
+	        		var s = $(this).attr('title');
+	        	}
+	        	
+	        	console.log(s);
+	        	
+	            $.ajax({
+	                url: '/modules/ajax/stocks_tp.php', // URL to the JSON file
+	                type: 'GET', // POST or GET
+	                dataType: 'json', // Tell it we're retrieving JSON
+	                data: {
+	                    s: s // Pass through the ID of the current element matched by '.selector'
+	                },
+	            })
+	            .then(function(data) {
+
+	                // Now we set the content manually (required!)
+	                if(data.p_change>0){
+	                	var chg = '<font style="color:green;font-size:14px;font-weight:bold;">'+data.p_change + '('+ data.p_pct_change +'%)</font>';
+	                }else{
+	                	var chg = '<font style="color:red;font-size:14px;font-weight:bold;">'+data.p_change + '('+ data.p_pct_change +'%)</font>';
+	                }
+	                
+	                var tp_dis = '<div> <img style="vertical-align:middle; border-radius: 2px; float:left; padding-right: 5px; object-fit: contain;" height="50px" width="50px" src="https://static.gurufocus.com/logos/' + data.stockid +'.png" onerror="this.style.display=\'none\'" /> <div style="float:left;"><h4 style="border-top:none;margin-top:10px;margin-bottom:5px;padding:0px;">'+data.company+'</h4><h4>'+data.symbol+' - '+data.exchange+'&nbsp;<a href="javascript:;" id="'+s+'" class="add_p" value="'+s+'" title="Add to your portfolio"><img src="https://static.gurufocus.com/images/icons/gray/png/sq_plus_icon&amp;16.png"> Add to portfolio</a></h4> </div> </div>'+
+
+	                '<table style="margin-top:10px;clear:both;width:100%;font-size:12px;"><tr><td style="font-size:14px;font-weight:bold;">'+data.currency_img+data.price + '</td><td>Volume: '+data.volumn_dis+'</td></tr><tr><td>'+chg+'</td><td>'+data.date_dis+'</td></tr></table><hr style="margin:6px 0;color:#CCC;">';
+	                 tp_dis += '<div style="font-weight:bold;text-align:center;"><a href="/stock.php?symbol='+s+'&tps">Summary</a> | <a href="/stock/'+s+'/chart">Interactive Chart</a> | <a href="/valuations.php?symbol='+s+'&tps">Valuations</a> | <a href="/fair_value_dcf.php?symbol='+s+'&tps">DCF</a></div>';
+	                
+	                
+	                	                //valuation 
+	                var valuation_arr = [];
+
+					if (data.EPV != 0) {
+						valuation_arr.push({'Earnings Power Value':data.EPV});
+					}
+					
+					if (data.ncav_real != 0) {
+						valuation_arr.push({'Net Current Asset Value':data.ncav_real});
+					}
+					
+					if (data.tangible_book != 0) {
+						valuation_arr.push({'Tangible Book':data.tangible_book});
+					}
+					
+					if (data.iv_dcf_share != 0 ) {
+						valuation_arr.push({'Projected FCF':data.iv_dcf_share});
+					}
+					
+					if (data.medpsvalue != 0) {
+						valuation_arr.push({'Median P/S Value':data.medpsvalue });
+					}
+					
+					if (data.grahamnumber != 0) {
+						valuation_arr.push({'Graham Number':data.grahamnumber});
+					}
+					
+					if (data.lynchvalue != 0) {
+						
+						valuation_arr.push({'Peter Lynch Value':data.lynchvalue});
+						
+					}
+					
+					
+					if (data.iv_dcf != 0) {
+						
+						valuation_arr.push({'DCF (FCF Based)':data.iv_dcf});
+						
+					}
+					
+					if (data.iv_dcEarning != 0) {
+						valuation_arr.push({'DCF (Earnings Based)':data.iv_dcEarning});
+					}
+					
+					/*
+					var valuation_str = '';
+					$.each(valuation_arr, function(key, value){
+						valuation_str+='<tr class="tabletr">';
+						for(var i in value){
+						  valuation_str += '<td>'+i+'</td>'+'<td>'+value[i]+'</td>';
+						}
+						valuation_str+='</tr>';
+					});*/
+					
+
+	                 tp_dis += '<hr style="margin:6px 0;color:#CCC;"><table style="font-size:12px;width:100%;"><tr><td>Market Cap</td><th><font class="nav modally">'+data.mktcap+'</font></th><td>P/E(ttm)</td><th><font class="nav modally">'+data.pettm+'</font></th></tr><tr><td>Enterprise Value</td><th><font class="nav modally">'+data.ev_morn+'</font></th><td>P/B</td><th><font class="nav modally">'+data.pb+'</font></th></tr></table>';
+	                 
+	                 //tp_dis += '<hr style="margin:6px 0;color:#CCC;"><table style="font-size:12px;width:100%;">'+valuation_str+'</table>';
+	                 
+	                 if(data.good_sign_num>0||data.num_warning_signs_meidum>0 || data.num_warning_signs_severe>0){
+	                  	tp_dis += '<hr style="margin:6px 0;color:#CCC;">';
+	                  }
+	                  
+	                  if(data.good_sign_num>0){
+	                  	var ss = '';
+	                  	
+	                  	if(data.good_sign_num>1){
+	                  		ss = 's';
+	                  	}
+	                  	tp_dis += '<a href="/analysis/'+s+'&subtab=signs&tps" class="good_small"  style="margin-top:1px;margin-left:4px;">'+data.good_sign_num+' Good Sign'+ss+'</a>';
+	                  }
+	                  
+	                  if(data.num_warning_signs_meidum>0){
+	                  	
+	                  	var ss = '';
+	                  	
+	                  	if(data.num_warning_signs_meidum>1){
+	                  		ss = 's';
+	                  	}
+	                  	
+	                  	tp_dis += '<a href="/analysis/'+s+'&subtab=signs&tps" class="medium_small" style="margin-top:1px;margin-left:4px;">'+data.num_warning_signs_meidum+' Medium Warning Sign'+ss+'</a>';
+	                  }
+	                  
+	                  
+	                  if(data.num_warning_signs_severe>0){
+	                  	
+	                  	var ss = '';
+	                  	
+	                  	if(data.num_warning_signs_severe>1){
+	                  		ss = 's';
+	                  	}
+	                  	
+	                  	tp_dis += '<a href="/analysis/'+s+'&subtab=signs&tps" class="severe_small" style="margin-top:1px;margin-left:4px;">'+data.num_warning_signs_severe+' Severe Warning Sign'+ss+'</a>';
+	                  }
+	                  
+	                 
+	                  var c_id = Math.floor((Math.random() * 100) + 1);
+	                  //chart comments
+	                  tp_dis += '<hr style="margin:6px 0;color:#CCC;"><div id="c_'+s+c_id+'" style="height: 120px"></div>';
+
+	                  // gfvalue chart
+	                  tp_dis += '<iframe src="/modules/chart/term/gf_value.php?height=200&width=320&symbol='+data.exchange + ':' +data.symbol+'&show_title=0" id="charts_iframe'+s+c_id+'" width="320" height="200" frameborder=0 scrolling=no></iframe>';
+
+	                  tp_dis += '<hr style="margin:6px 0;color:#CCC;">';
+	                  
+	                  tp_dis += '<div style="text-align:center;"><a href="/stock/'+s+'/financials" style="margin-top: 10px;" target="_blank" class="bs_btn bs_btn-primary">Click for '+data.exchange + ':' + data.symbol+' 30-Y Financials</a></div>';
+	                  
+	                api.set('content.text',tp_dis);
+
+	                
+	                //Charts data start
+	                
+	                var stock_price_now = data.price;
+	                var stock_price_now_pos = data.price;
+	                if(stock_price_now_pos>data.max_num){
+	                	stock_price_now_pos = data.max_num+10;
+	                }
+	                
+	                var valuation_cate_string = '';
+	                var valuation_data_string = '';
+	                var min_num = data.min_num;
+	                
+	                
+	                var currency_symbol=data.currency_img;
+	              
+var valuation_cate_arr = [];
+var valuation_data_arr = [];
+
+if (data.EPV != 0) {
+	valuation_cate_arr.push('Earnings Power Value');
+	valuation_data_arr.push({y:parseFloat(data.EPV),color:'#AFC8F8',url:'/term/EPV/'+s+'/Earnings%2BPower%2BValue%2B%2528EPV%2529/'+s});
+}
+
+if (data.ncav_real != 0) {
+	valuation_cate_arr.push('Net Current Asset Value');
+	valuation_data_arr.push({y:parseFloat(data.ncav_real),color:'green',url:'/term/NCAV_real/'+s+'/Net+Current+Asset+Value+%28per+share%29/'+s});
+}
+
+if (data.tangible_book != 0) {
+	valuation_cate_arr.push('Tangible Book');
+	valuation_data_arr.push({y:parseFloat(data.tangible_book),color:'#F6BD0F',url:'/term/Tangibles_book_per_share/'+s+'/Tangible%2BBook%2BValue%2Bper%2BShare/'+s});
+}
+
+if (data.iv_dcf_share != 0 ) {
+	valuation_cate_arr.push('Projected FCF');
+	valuation_data_arr.push({y:parseFloat(data.iv_dcf_share),color:'#8BBA00',url:'/term/iv_dcf_share/'+s+'/Intrinsic%2BValue%2B%2528DCF%2BProjected%2529/'+s});
+}
+
+if (data.medpsvalue != 0) {
+	valuation_cate_arr.push('Median P/S Value');
+	valuation_data_arr.push({y:parseFloat(data.medpsvalue),color:'#FF8E46',url:'/term/medpsvalue/'+s+'/Median%2BP%252FS%2BValue/'+s});
+}
+
+if (data.grahamnumber != 0) {
+	valuation_cate_arr.push('Graham Number');
+	valuation_data_arr.push({y:parseFloat(data.grahamnumber),color:'#008E8E',url:'/term/grahamnumber/'+s+'/Graham%2BNumber/'+s});
+}
+
+if (data.lynchvalue != 0) {
+	
+	valuation_cate_arr.push('Peter Lynch Value');
+	valuation_data_arr.push({y:parseFloat(data.lynchvalue),color:'#D64646',url:'/term/lynchvalue/'+s+'/Peter%2BLynch%2BFair%2BValue/'+s});
+	
+}
+
+
+if (data.iv_dcf != 0) {
+	
+	valuation_cate_arr.push('DCF (FCF Based)');
+	valuation_data_arr.push({y:parseFloat(data.iv_dcf),color:'#C1E6D0',url:'/term/Intrinsic%20Value%20(DCF)/'+s+'/Intrinsic%2BValue%253A%2BDCF%2B%2528FCF%2BBased%2529/'+s});
+	
+}
+
+if (data.iv_dcEarning != 0) {
+	valuation_cate_arr.push('DCF (Earnings Based)');
+	valuation_data_arr.push({y:parseFloat(data.iv_dcEarning),color:'#BFDC22',url:'/term/Intrinsic%20Value%20(DE)/'+s+'/Intrinsic%2BValue%253A%2BDCF%2B%2528Earnings%2BBased%2529/'+s});
+	
+}
+
+	              
+	              //console.log(valuation_data_arr);
+	              
+//valuation_cate_arr = ['Earnings Power Value','Net Current Asset Value','Tangible Book','Projected FCF','Median P/S Value','Graham Number','Peter Lynch Value'];
+//valuation_data_arr = [{y:41.57,color:'#AFC8F8',url:'/term/EPV/MJN/Earnings%2BPower%2BValue%2B%2528EPV%2529/MJN'},{y:-4.180,color:'green',url:'/term/NCAV_real/MJN/Net+Current+Asset+Value+%28per+share%29/MJN'},{y:1.29,color:'#F6BD0F',url:'/term/Tangibles_book_per_share/MJN/Tangible%2BBook%2BValue%2Bper%2BShare/MJN'},{y:31.82,color:'#8BBA00',url:'/term/iv_dcf_share/MJN/Intrinsic%2BValue%2B%2528DCF%2BProjected%2529/MJN'},{y:85.03,color:'#FF8E46',url:'/term/medpsvalue/MJN/Median%2BP%252FS%2BValue/MJN'},{y:9.99,color:'#008E8E',url:'/term/grahamnumber/MJN/Graham%2BNumber/MJN'},{y:29.13,color:'#D64646',url:'/term/lynchvalue/MJN/Peter%2BLynch%2BFair%2BValue/MJN'}];
+	      //charts data ends
+
+//charts start
+$.getScript("https://apis.gurufocus.com/js/highstock_1.3.3.js", function() {	      
+	      //Charts settings start
+	    Highcharts.setOptions({
+            lang : {
+				rangeSelectorZoom : '',
+				myButtonTitle: ''
+			},
+			colors: ['#0EB45A', '#0F22B1', '#FF0000', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+			chart: {
+	            borderRadius : 0,
+				borderWidth : 0,
+				backgroundColor : '#FFF',
+				plotBorderColor : '#FFF',
+				plotBorderWidth : 1,
+				plotBackgroundColor: {
+		            linearGradient: {
+	                    x1: 0,
+	                    y1: 0,
+	                    x2: 0,
+	                    y2: 1
+	                },
+	                stops: [
+		                [0, '#FFF'],
+		                [1, '#FFF']
+		            ]
+	       		}
+        	},
+        	yAxis : {
+        		tickWidth : 1,
+        		tickColor: '#EEEEEE',
+        		lineColor: '#EEEEEE',
+        		gridLineColor : '#EEEEEE',
+        		labels : {
+					style : {
+						color : '#000',
+						fontSize : '11px'
+					}
+				}
+        	},
+        	xAxis : {
+        		tickColor: '#EEEEEE',
+        		lineColor: '#EEEEEE',
+        		labels : {
+					style : {
+						color : '#000',
+						fontSize : '11px'
+					}
+				}
+        	}
+        });
+//Charts settings ends
+
+	
+    
+
+                            
+		var chart = new Highcharts.Chart({
+			chart : {
+				renderTo : 'c_'+s+c_id,
+				type : 'bar',
+				animation : false,
+				// height: '200px'
+			},
+			title : {
+				text : null
+			},
+			legend : {
+				enabled : false
+			},
+			exporting : {
+				buttons : {
+					printButton : {
+						enabled : false
+					},
+					exportButton : {
+						enabled : false
+					}
+				}
+			},
+			credits : {
+				enabled : false
+			},
+			xAxis : {
+				lineWidth : 0,
+				tickLength : 0,
+				categories : valuation_cate_arr,
+				labels : {
+					style : {
+						fontSize : '10px',
+						color : '#000',
+						width : '120px'
+					}
+				}
+			},
+			yAxis : {
+				
+				gridLineWidth : 0,
+				title : {
+					text : null
+				},
+				//minRange : stock_price_now_pos,
+				min : min_num,
+				plotLines : [{
+					color : 'green',
+					width : 1,
+					zIndex : 5,
+					label : {
+						text : 'Price Now: ' + currency_symbol + stock_price_now,
+						style : {
+							fontSize : '9px',
+							color : 'green'
+						},
+						align : 'center',
+						verticalAlign : 'bottom',
+						rotation : 0,
+						x : -5
+					},
+					value : stock_price_now,
+					dashStyle : 'Dash'
+				}, {
+					color : '#DDD',
+					width : 2,
+					zIndex : 5,
+					value : 0,
+					dashStyle : 'Solid'
+				}],
+				labels : {
+					enabled : false
+				}
+			},
+			plotOptions : {
+				series : {
+					animation : false,
+					borderColor : '#C0C0C0',
+					shadow : false,
+					cursor : 'pointer',
+					point : {
+						events : {
+							click : function() {
+								window.open(this.options.url, '_blank');
+							}
+						}
+					}
+				}
+			},
+			tooltip : {
+				backgroundColor : '#FFFFFF',
+				borderWidth : 0,
+				borderRadius : 0,
+				style : {
+					fontSize : '9px',
+					color : 'blue'
+				},
+				headerFormat : '{point.key} ',
+				pointFormat : ': <b>' + currency_symbol + '{point.y}</b>',
+				positioner : function() {
+					return {
+						x : 100,
+						y : -11
+					};
+				},
+				shadow : false
+			},
+			series : [{
+				name : 'valuations',
+				data : valuation_data_arr,
+				pointWidth: 10
+			}]
+		}, function(chart) {
+		});
+	                
+	    });
+	    
+	    //charts end
+	            }, function(xhr, status, error) {
+	                // Upon failure... set the tooltip content to the status and error value
+	                //api.set('content.text', status + ': ' + error);
+	                api.set('content.text', 'No information provided.');
+	            });
+	            
+	            //google analytics
+	   //          ga('send', {
+				//   hitType: 'event',
+				//   eventCategory: 'Tooltip',
+				//   eventAction: 'open',
+				//   eventLabel: 'Tooltip for stock'
+				// });
+	
+	            return 'Loading...' // Set some initial loading text
+	        }
+	    },
+	    hide: {
+	    	fixed: true,
+	        delay: 500
+	    },
+	    style: {
+	        classes: 'myCustomClass'
+	    }
+	});
+	//click add_p
+
+}
+
+//
+$(document).ready(function () {
+
+	CreateToolTips();
+
+});
+</script>
+
+
+
+
+
+
+
+<script>
+// Add to portfolio
+
+
+    function updateTips(t) {
+        tips.text(t).addClass("ui-state-highlight");
+        setTimeout(function() {
+            tips.removeClass("ui-state-highlight", 1500);
+        }, 500);
+    }
+
+    function checkSelect(o, n) {
+        //alert(o);
+        //
+        if ( o.length==0) {
+            updateTips("You must select a " + n);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+//
+
+	$("#watch_area").dialog({
+        autoOpen : false,
+        resizable : false,
+        height : 'auto',
+        width : 400,
+        modal : true,
+     });
+     
+    $("#watchlist-form").dialog({
+        autoOpen : false,
+        resizable : false,
+        height : 'auto',
+        width : 400,
+        modal : true,
+        buttons : {
+            "Submit" : function() {
+                var bValid = true;
+
+                // Get which radio is selected
+                var port = [];
+                $('input[name=selectportfolio]:checked').each(function(){
+                	port.push($(this).val()+'');
+                });
+
+                if(port.length>0){
+                    port=port.join("|");
+                }
+
+                bValid = bValid && checkSelect(port, "portfolio");
+
+                // If user input is valid, submit stock notes to server.
+                if (bValid) {
+
+                    var new_port_name = $('#newportfolioname').val();
+
+                    // Get Stock Notes
+                    var notes = jQuery.trim($('#watchlistnotes').val());
+                    
+                    var WatchSymbol = $(this).data('sym');
+
+                    // Add notes
+                    // Get thread_id
+                    var message_id = '';
+                    if (notes != '') {
+                        var sublength = notes.length;
+                        if (sublength > 20) {
+                            var subject = notes.substr(0, 20);
+                        } else {
+                            var subject = notes;
+                        }
+                        var time1 = new Date().getTime();
+
+                        $.post("/modules/post/handle_forum_posts.php", "id_out=1&body=<a href=\"https://www.gurufocus.com/stock/" + WatchSymbol + "\">$" + WatchSymbol + "</a>: " + notes + "&subject=" + subject + "&lasttime=" + time1 + "&parent_id=0&thread=0&forum_id=9&Submit=Submit&stocks=" + WatchSymbol, function(theResponse) {
+                            message_id = theResponse;
+
+                            // Add symbol to portfolio
+                            //alert(message_id);
+                            $.post("/modules/post/watch_new.php", "symbol=" + escape(WatchSymbol) + "&port_id=" + port + "&new_port_name=" + new_port_name + "&notes=" + message_id, function(theResponse) {
+                                $("#watch_area").html(theResponse);
+                            });
+                        });
+                    } else {
+                        // If no notes
+                        $.post("/modules/post/watch_new.php", "symbol=" + escape(WatchSymbol) + "&port_id=" + port + "&new_port_name=" + new_port_name, function(theResponse) {
+                            $("#watch_area").html(theResponse);
+                        });
+
+                    }
+
+                    // Close the dialog
+                    $(this).dialog("close");
+                }
+
+            },
+            Cancel : function() {
+                $(this).dialog("close");
+            }
+        },
+        close : function() {
+            //allFields.val( "" ).removeClass( "ui-state-error" );
+            //$("#watch_area").html("<a href='javascript:;' id='watch' style='addtoport'><img src='https://static.gurufocus.com/images/icons/gray/png/sq_plus_icon&16.png' />Add to Portfolio</a>");
+        }
+    });
+
+    
+  
+$(document.body).on('click', '.add_p' ,function(){
+	
+	var UserId = "";
+	var symbol = $(this)[0]['id'];
+	//Hide all tooltips
+	$(".stocks_tp").qtip('hide');
+	
+	 if (UserId > 0) {//load Ajax javascript only if logged in.
+            // put user's portfolio in stock_port_p;
+            $.get('/modules/stock/get_port.php?user_id=' + UserId + '&symbol=' + symbol, function(data) {
+                $('#stock_port_p').html(data);
+            });
+            // open dialog
+            $("#watchlist-form").data('sym', $(this).attr('id')).dialog("open");
+            $( "#watchlist-form" ).dialog({position:{my:"center center",at:"center top", of:"#newcontent"}});
+            
+
+        } else {
+            $("#watch_area").dialog("open");
+            $( "#watch_area" ).dialog({position:{my:"center center",at:"center top+300", of:"#newcontent"}});
+        }
+});
+
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        CreateToolTips();
+    })
+</script>
+<style>
+.qtip-default{
+    border: solid 2px #000 !important;
+    background-color: #FFF !important;
+    max-width: 300px !important;
+    min-width: 200px !important;
+}
+switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    height:20px;
+    width:35px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .p-item{
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+</style>
